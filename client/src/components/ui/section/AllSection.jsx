@@ -85,22 +85,32 @@ export const FormSection = () => {
     </div>
   );
 };
-export const PricingSection = ({ plans }) => {
+export const PricingSection = ({ plans, headings }) => {
   return (
     <div className="md:col-span-2 mt-16 px-4 text-center">
-      <p className="text-blue-600 font-medium uppercase text-sm mb-5">
-        Transparent Pricing, No Hidden Charges
-      </p>
-      <h2 className="text-3xl font-bold text-gray-900 mb-6">
-        Choose the Right Plan
-      </h2>
-      <h2 className="text-3xl font-bold text-gray-900">
-        For your <span className="text-blue-600">Bussiness</span>
-      </h2>
-      <p className="text-gray-600 mt-7 mb-10 max-w-2xl mx-auto">
-        Start your Business effortlessly with our tailored pricing plans. Start
-        your journey today!
-      </p>
+      {headings?.tagline && (
+        <p className="text-blue-600 font-medium uppercase text-sm mb-5">
+          {headings.tagline}
+        </p>
+      )}
+
+      {headings?.title && (
+        <h2 className="text-3xl font-bold text-gray-900 mb-6">
+          {headings.title}
+        </h2>
+      )}
+
+      {headings?.subtitle && (
+        <h2 className="text-3xl font-bold text-gray-900">
+          {headings.subtitle}
+        </h2>
+      )}
+
+      {headings?.description && (
+        <p className="text-gray-600 mt-7 mb-10 max-w-2xl mx-auto">
+          {headings.description}
+        </p>
+      )}
 
       <div className="min-h-screen py-16 px-5">
         <div className="max-w-9xl mx-auto">
@@ -112,28 +122,24 @@ export const PricingSection = ({ plans }) => {
                   plan.popular ? "ring-2 ring-blue-700 ring-opacity-50" : ""
                 } bg-white flex flex-col h-full min-h-[750px]`}
               >
-                {/* Popular Badge */}
                 {plan.popular && (
                   <div className="absolute -top-4 right-6 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold transform rotate-12">
                     POPULAR
                   </div>
                 )}
 
-                {/* Icon */}
                 <div
                   className={`w-16 h-16 mx-auto mb-6 rounded-2xl ${plan.color} flex items-center justify-center text-2xl`}
                 >
                   {plan.icon}
                 </div>
 
-                {/* Title */}
                 <h3
                   className={`text-lg font-bold text-center mb-6 ${plan.textColor}`}
                 >
                   {plan.name}
                 </h3>
 
-                {/* Price */}
                 <div className="text-center mb-8">
                   <div className="text-4xl font-bold text-gray-900 mb-2">
                     {plan.price}
@@ -141,7 +147,6 @@ export const PricingSection = ({ plans }) => {
                   <div className="text-gray-500 text-sm">{plan.gst}</div>
                 </div>
 
-                {/* Features */}
                 <div className="space-y-2 text-sm font-medium flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <div
@@ -156,13 +161,11 @@ export const PricingSection = ({ plans }) => {
                   ))}
                 </div>
 
-                {/* Button hamesha niche */}
                 <button
                   className={`w-full py-2 rounded-lg font-semibold text-sm mt-auto transition-all duration-300 flex items-center justify-center space-x-2 ${plan.buttonStyle}`}
                 >
                   <span>
-                    Get{" "}
-                    {plan.name.charAt(0) + plan.name.slice(1).toLowerCase()}
+                    Get {plan.name.charAt(0) + plan.name.slice(1).toLowerCase()}
                   </span>
                   <ArrowRight className="w-5 h-5" />
                 </button>
