@@ -1,19 +1,25 @@
 // src/components/Header.jsx
-import React from "react";
-import { Phone, MessageCircle } from "lucide-react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
+
 import ExploreDropdown from "./ExploreUs";
 import Compliance from "./Compliance";
 import CompanySet from "./CompanySet";
 import GstReturnDropdown from "./GstReturn";
 import IpLegal from "./IpLegal";
 import OtherReg from "./OtherReg";
-import { Link } from "react-router-dom";
+
 import Watsup from "../../assets/icons/Whatsapp.png";
 import phoneIcon from "../../assets/icons/phone.png";
+
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
         <div className="flex items-center space-x-2">
           <Link
             to="/"
@@ -23,32 +29,21 @@ const Header = () => {
           </Link>
         </div>
 
+        {/* Desktop Nav */}
         <nav className="hidden md:flex space-x-2 text-gray-600 font-light relative">
-          <a href="/" className="hover:text-blue-600">
-            <CompanySet />
-          </a>
-          <a href="/" className="hover:text-blue-600">
-            <Compliance />
-          </a>
-          <a href="/" className="hover:text-blue-600">
-            <GstReturnDropdown />
-          </a>
-          <a href="/" className="hover:text-blue-600">
-            <IpLegal />
-          </a>
-          <a href="/" className="hover:text-blue-600">
-            <OtherReg />
-          </a>
-          <a href="/" className="hover:text-blue-600  mt-2">
-            <ExploreDropdown />
-          </a>
+          <CompanySet />
+          <Compliance />
+          <GstReturnDropdown />
+          <IpLegal />
+          <OtherReg />
+          <ExploreDropdown />
         </nav>
 
-        <div className="flex items-center ">
-         
+        {/* Right Section (Desktop Only) */}
+        <div className="hidden md:flex items-center space-x-4">
           <a
-            href="tel:+91 8602222494"
-            className="flex items-center space-x-0.5  text-black hover:text-blue-600 font-semibold"
+            href="tel:+918602222494"
+            className="flex items-center space-x-1 text-black hover:text-blue-600 font-semibold"
           >
             <img src={phoneIcon} alt="Phone" className="w-5 h-5" />
             <span>+91 8602222494</span>
@@ -58,17 +53,11 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-          
-           <img
-              src={Watsup}
-              alt="WhatsApp"
-              className="w-5 h-5 ml-5 mr-2" 
-            />
-            </a>
+            <img src={Watsup} alt="WhatsApp" className="w-5 h-5" />
+          </a>
           <Link to="/contact">
-            <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent  py-1 px-5 font-medium text-sm text-[#001C35] transition-all duration-500 ease-out hover:bg-[#001C35]">
-              {/* Default state: Get In Touch */}
-              <span className="flex items-center gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-x-[-20px]">
+            <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent py-1 px-5 font-medium text-sm text-[#001C35] transition-all duration-500 ease-out hover:bg-[#001C35]">
+              <span className="flex items-center gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:-translate-x-5">
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#001C35]">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -87,9 +76,7 @@ const Header = () => {
                 </span>
                 <span className="text-sm">Get In Touch</span>
               </span>
-
-              {/* Hover state: Request a Callback slides in */}
-              <span className="absolute flex items-center gap-1 opacity-0 -translate-x-20 transition-all duration-800 ease-out group-hover:opacity-300 group-hover:translate-x-0 ">
+              <span className="absolute flex items-center gap-1 opacity-0 -translate-x-20 transition-all duration-800 ease-out group-hover:opacity-100 group-hover:translate-x-0">
                 <span className="text-sm text-white">Request a Callback</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -109,6 +96,28 @@ const Header = () => {
             </button>
           </Link>
         </div>
+
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="md:hidden text-gray-800 focus:outline-none"
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden bg-white border-t border-gray-200 px-6 py-4 space-y-4 transition-all duration-300 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <CompanySet />
+        <Compliance />
+        <GstReturnDropdown />
+        <IpLegal />
+        <OtherReg />
+        <ExploreDropdown />
       </div>
     </header>
   );

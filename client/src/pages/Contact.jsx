@@ -60,32 +60,35 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-gray-50 font-inter">
       {/* Hero Section */}
-      <section className="py-[90px] bg-blue-50 relative overflow-hidden">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
-          <motion.div
-            className="text-center space-y-8"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900">
-              Get in <span className="text-blue-800 ">Touch</span>
-            </h1>
-            <p className="text-lg font-medium max-w-3xl text-gray-800 mx-auto leading-relaxed my-5 px-3">
-              At TaxBizLegal, we believe in clear communication—no hidden fees,
-              no confusion. From explaining government rules to guiding you on
-              pricing and timelines, we keep everything simple and transparent.
-              So you can focus on your business, while we handle the legal
-              details.
-            </p>
-            <p className="text-lg font-medium max-w-3xl text-gray-800 mx-auto leading-relaxed my-5 px-3">
-              Have questions or need guidance? We’re here to help — you’re just
-              a call away. Reach out to us and let’s talk about how we can
-              support your goals.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+     <section className="py-20 bg-blue-50 relative overflow-hidden">
+  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+    <motion.div
+      className="space-y-8"
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+    >
+      {/* Heading */}
+      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center sm:text-left">
+        Get in <span className="text-blue-800">Touch</span>
+      </h1>
+
+      {/* Paragraphs */}
+      <p className="text-base sm:text-lg font-medium max-w-3xl text-gray-800 leading-relaxed px-2 sm:px-0 text-left">
+        At TaxBizLegal, we believe in clear communication—no hidden fees, no
+        confusion. From explaining government rules to guiding you on pricing
+        and timelines, we keep everything simple and transparent. So you can
+        focus on your business, while we handle the legal details.
+      </p>
+
+      <p className="text-base sm:text-lg font-medium max-w-3xl text-gray-800 leading-relaxed px-2 sm:px-0 text-left">
+        Have questions or need guidance? We’re here to help — you’re just a
+        call away. Reach out to us and let’s talk about how we can support your
+        goals.
+      </p>
+    </motion.div>
+  </div>
+</section>
 
       {/* Contact Info & Form */}
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
