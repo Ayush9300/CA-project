@@ -18,6 +18,17 @@ import {
 const PrivateLimited = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
+
+   const pricingHeadings = {
+    tagline:
+      "Transparent Pricing, No Hidden Charges",
+    title: "Choose the Right Plan",
+    subtitle: "For your Startup",
+    description:
+      "Start your Business effortlessly with our tailored pricing plans. Start your journey today!",
+  };
+
+
   // Data arrays
   const heroContent = {
     tagline: "Register your StartUp with Ease!",
@@ -313,7 +324,7 @@ const PrivateLimited = () => {
     <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start min-h-screen">
       <HeroSection heroContent={heroContent} />
       <FormSection />
-      <PricingSection plans={plans} />
+      <PricingSection plans={plans}  headings={pricingHeadings} />
       <AboutSection aboutContent={aboutContent} />
       <BusinessStructureSection businessStructures={businessStructures} />
       <DocumentsSection

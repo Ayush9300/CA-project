@@ -5,9 +5,9 @@ import img from "../../../assets/icons/download.png";
 export const HeroSection = ({ heroContent }) => {
   return (
     <div className="space-y-6 mt-[150px]">
-      <p className="text-blue-600 font-medium">{heroContent.tagline}</p>
+      <p className="text-[#0058BA] font-medium">{heroContent.tagline}</p>
       <h1 className="text-4xl font-bold text-gray-900">
-        Start Your <span className="text-blue-600">Business</span> & Unlock
+        Start Your <span className="text-blue-900">Business</span> & Unlock
         Growth Opportunities!
       </h1>
       <ul className="space-y-4 text-gray-700">
@@ -89,7 +89,7 @@ export const PricingSection = ({ plans, headings }) => {
   return (
     <div className="md:col-span-2 mt-16 px-4 text-center">
       {headings?.tagline && (
-        <p className="text-blue-600 font-medium uppercase text-sm mb-5">
+        <p className="text-[#0058BA] font-medium uppercase text-sm mb-5">
           {headings.tagline}
         </p>
       )}
@@ -101,7 +101,7 @@ export const PricingSection = ({ plans, headings }) => {
       )}
 
       {headings?.subtitle && (
-        <h2 className="text-3xl font-bold text-gray-900">
+        <h2 className="text-4xl font-bold text-[#0058BA]">
           {headings.subtitle}
         </h2>
       )}

@@ -11,13 +11,12 @@ import ladkiImg from "../assets/ladki1.webp";
 import { FaLightbulb, FaAward, FaUsers } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-
 const About = () => {
   const steps = [
     {
       img: Step1,
       title: "Tell Us Your Needs",
-      desc: "Simply submit your request, and we’ll take it from there. No paperwork, no confusion.",
+      desc: "Simply submit your request, and we'll take it from there. No paperwork, no confusion.",
     },
     {
       img: Step2,
@@ -35,17 +34,17 @@ const About = () => {
   const connectors = [cross, equal];
 
   return (
-    <div className="relative pt-[100px] ">
+    <div className="relative pt-[80px] lg:pt-[100px]">
       {/* About Section */}
-      <div className="w-[90%] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div className="w-[95%] lg:w-[90%] mx-auto px-2 sm:px-4 lg:px-8">
+        <div className="container mx-auto px-2 sm:px-6 grid md:grid-cols-2 gap-6 lg:gap-12 items-center">
           {/* Left Side: Text Content */}
-          <div className="text-center md:text-left">
-            <p className="text-blue-600 font-semibold">WHO WE ARE</p>
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-8">
-              About <span className="text-blue-800">EBIZ PANJIYAN CENTER</span>
+        <div className="text-left md:text-left">
+            <p className="text-blue-600 font-semibold text-sm lg:text-base">WHO WE ARE</p>
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-4 lg:mb-8">
+              About <span className="text-blue-800">TaxBizLegal</span>
             </h1>
-            <div className="text-gray-800 text-lg font-medium leading-relaxed space-y-4">
+            <div className="text-gray-800 text-sm sm:text-base lg:text-lg font-medium leading-relaxed space-y-3 lg:space-y-4">
               <p>
                 Welcome to TaxBizLegal.com, your trustworthy resource for
                 compliance, tax, and legal solutions! We compress intricate
@@ -83,10 +82,11 @@ const About = () => {
             </div>
           </div>
 
+
           {/* Right Side: Illustration */}
-          <div className="flex justify-center md:justify-end">
-            <div className="w-full max-w-[520px] lg:max-w-[620px]">
-              <div className="aspect-[5/4] border-4 border-black rounded-xl overflow-hidden">
+          <div className="flex justify-center md:justify-end mt-6 md:mt-0">
+            <div className="w-full max-w-[300px] sm:max-w-[400px] lg:max-w-[520px] xl:max-w-[620px]">
+              <div className="aspect-[5/4] border-2 lg:border-4 border-black rounded-xl overflow-hidden">
                 <img
                   src={Hero}
                   alt=""
@@ -99,21 +99,27 @@ const About = () => {
       </div>
 
       {/* Steps Section */}
-      <section className="bg-[#E6EFFD] py-20 mt-16">
-        <div className="container mx-auto px-6 lg:px-20 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-12">
+      <section className="bg-[#E6EFFD] py-10 lg:py-20 mt-8 lg:mt-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-20 text-center">
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-bold text-gray-900 mb-8 lg:mb-12 px-2">
             We aim to provide{" "}
             <span className="text-blue-800">Stress-Free Services</span> Handled
             by <span className="text-blue-800">Experts</span>
           </h2>
 
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-8">
             {steps.map((step, index) => (
               <React.Fragment key={index}>
-                <div className="flex flex-col items-center text-center px-4">
-                  <img src={step.img} alt={step.title} className="w-35 mb-4" />
-                  <h3 className="font-bold text-xl mb-2">{step.title}</h3>
-                  <p className="text-gray-700 text-sm md:text-base">
+                <div className="flex flex-col items-center text-center px-2 lg:px-4 max-w-xs">
+                  <img
+                    src={step.img}
+                    alt={step.title}
+                    className="w-24 sm:w-32 lg:w-35 mb-3 lg:mb-4"
+                  />
+                  <h3 className="font-bold text-lg lg:text-xl mb-2">
+                    {step.title}
+                  </h3>
+                  <p className="text-gray-700 text-sm md:text-base leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
@@ -136,34 +142,34 @@ const About = () => {
 
       <div className="relative">
         {/* Mission Card */}
-        <div className="max-w-7xl mx-auto bg-gray-50 rounded-xl overflow-hidden flex flex-col md:flex-row  space-y-4 md:space-y-0 md:space-x-6 mt-8 h-[550px] z-10 relative">
+        <div className="max-w-7xl  bg-gray-50 rounded-xl overflow-hidden flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 mt-4 lg:mt-8 min-h-[400px] lg:h-[550px] z-10 relative mx-4 lg:mx-auto">
           {/* Left Image */}
-          <div className="md:w-1/3 flex justify-center items-center  bg-gradient-to-br from-blue-300 to-blue-100 p-3">
+          <div className="md:w-1/3 flex justify-center items-center bg-gradient-to-br from-blue-300 to-blue-100 p-2 lg:p-3">
             <img
               src={ladki1}
               alt="ladki1"
-              className="w-full h-auto object-contain rounded-lg"
+              className="w-full h-auto object-contain rounded-lg max-h-[250px] lg:max-h-none"
             />
           </div>
 
           {/* Right Content */}
           <div className="md:w-2/3 flex flex-col justify-center">
-            <div className="p-10">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+            <div className="p-4 sm:p-6 lg:p-10">
+              <h2 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4 lg:mb-6">
                 Our <span className="text-blue-800">Mission</span>
               </h2>
-              <p className="text-blue-800 text-base font-medium mb-4">
+              <p className="text-blue-800 text-sm lg:text-base font-medium mb-3 lg:mb-4 leading-relaxed">
                 At TaxBizLegal.com, our mission is to simplify legal, tax, and
                 compliance processes, making them accessible and hassle-free for
                 businesses of all sizes. We are committed to providing expert
                 guidance with efficiency, transparency, and affordability.
               </p>
-              <p className="text-blue-800 text-base font-medium mb-4">
+              <p className="text-blue-800 text-sm lg:text-base font-medium mb-3 lg:mb-4 leading-relaxed">
                 We strive to empower entrepreneurs by handling complex
                 regulations so they can focus on growth. Our dedicated
                 professionals ensure accuracy, reliability, and timely support.
               </p>
-              <p className="text-blue-800 text-base font-medium">
+              <p className="text-blue-800 text-sm lg:text-base font-medium leading-relaxed">
                 By offering seamless digital solutions, we aim to be a trusted
                 partner in every business journey, fostering success through
                 compliance and strategic insights.
@@ -171,15 +177,130 @@ const About = () => {
             </div>
 
             {/* Authenticity Badge */}
-            <div className="mt-4 flex justify-end mr-10">
-              <img src={trust} alt="trust" className="w-28 h-auto " />
+            <div className="mt-2 lg:mt-4 flex justify-end mr-4 lg:mr-10">
+              <img src={trust} alt="trust" className="w-20 lg:w-28 h-auto" />
             </div>
           </div>
         </div>
 
-        {/* Blue Section overlapping below */}
+        {/* Blue Section - Mobile/Tablet View */}
+        <div className="block lg:hidden min-h-screen bg-[#001C35] -mt-32 relative z-0 px-4 py-20">
+          <div className="w-full max-w-4xl mx-auto">
+            {/* Our Values Title */}
+            <div className="text-center mb-8 mt-20">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4">
+                Our Values
+              </h1>
+            </div>
 
-        <div className="h-[200vh] bg-[#001C35] -mt-52 relative z-0 flex items-center justify-center px-4">
+            {/* Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-12">
+              <div className="bg-blue-800 text-white p-4 sm:p-6 rounded-lg shadow-lg">
+                <div className="bg-orange-500 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full mb-3 sm:mb-4">
+                  <FaAward className="text-sm sm:text-base" />
+                </div>
+                <h3 className="font-bold text-base sm:text-lg mb-2">
+                  Complete Service Dedication
+                </h3>
+                <p className="text-xs sm:text-sm">
+                  We are committed to customer satisfaction. Our team supports
+                  you at every step.
+                </p>
+              </div>
+
+              <div className="bg-blue-800 text-white p-4 sm:p-6 rounded-lg shadow-lg">
+                <div className="bg-orange-500 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full mb-3 sm:mb-4">
+                  <FaLightbulb className="text-sm sm:text-base" />
+                </div>
+                <h3 className="font-bold text-base sm:text-lg mb-2">
+                  Quick and Easy Process
+                </h3>
+                <p className="text-xs sm:text-sm">
+                  Our platform ensures your legal work is completed quickly and
+                  efficiently.
+                </p>
+              </div>
+
+              <div className="bg-blue-800 text-white p-4 sm:p-6 rounded-lg shadow-lg sm:col-span-2 sm:max-w-md sm:mx-auto">
+                <div className="bg-orange-500 w-8 h-8 sm:w-10 sm:h-10 flex items-center justify-center rounded-full mb-3 sm:mb-4">
+                  <FaUsers className="text-sm sm:text-base" />
+                </div>
+                <h3 className="font-bold text-base sm:text-lg mb-2">
+                  Managed by Professionals
+                </h3>
+                <p className="text-xs sm:text-sm">
+                  Every service is handled by skilled legal experts ensuring
+                  accuracy and reliability.
+                </p>
+              </div>
+            </div>
+
+            {/* Center Image */}
+            <div className="flex justify-center mb-8">
+              <img
+                src={ladkiImg}
+                alt="Smiling Person"
+                className="w-full max-w-xs sm:max-w-sm h-auto object-contain"
+              />
+            </div>
+
+            {/* Call to Action */}
+            <div className="text-center">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-10 leading-tight">
+                Got questions? <br /> We're just a call away!
+              </h1>
+              <Link to="/contact">
+                <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent py-2 px-4 font-medium text-sm text-gray-300 transition-all duration-500 ease-out hover:bg-red-600">
+                  {/* Default state: Get In Touch */}
+                  <span className="flex items-center gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-x-[-20px]">
+                    <span className="flex h-8 w-9 items-center justify-center rounded-lg bg-red-600">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-5 w-5 text-white"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                        />
+                      </svg>
+                    </span>
+                    <span className="text-sm">Get In Touch</span>
+                  </span>
+
+                  {/* Hover state: Request a Callback slides in */}
+                  <span className="absolute flex items-center gap-1 opacity-0 -translate-x-20 transition-all duration-800 ease-out group-hover:opacity-100 group-hover:translate-x-0">
+                    <span className="text-sm text-white">
+                      Request a Callback
+                    </span>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={2}
+                      stroke="currentColor"
+                      className="h-5 w-5 text-white"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </span>
+                </button>
+              </Link>
+            </div>
+            <hr className="h-px bg-gray-400 border-0 mt-8 w-full" />
+          </div>
+        </div>
+
+        {/* Blue Section - Desktop View (Original) */}
+        <div className="hidden lg:block h-[200vh] bg-[#001C35] -mt-52 relative z-0  items-center justify-center px-4">
           {/* Cards Container */}
           <div className="absolute top-20 left-10 space-y-6 mt-50 ml-20">
             <h1 className="text-8xl font-bold text-white mb-4">Our Values</h1>
@@ -197,8 +318,7 @@ const About = () => {
             </div>
 
             {/* Card 2 */}
-
-            <div className="bg-blue-800 text-white p-6 rounded-lg w-70 h-70  shadow-lg relative z-10  ">
+            <div className="bg-blue-800 text-white p-6 rounded-lg w-70 h-70 shadow-lg relative z-10">
               <div className="bg-orange-500 w-10 h-10 flex items-center justify-center rounded-full mb-4">
                 <FaAward />
               </div>
@@ -210,15 +330,38 @@ const About = () => {
                 at every step.
               </p>
             </div>
-            <div className="text-center ml-80 ">
+            <div className="text-center ml-80">
               <h1 className="text-6xl font-bold text-white mt-20 leading-tight">
                 Got questions? <br /> We're just a call away!
               </h1>
-              <Link to="/contact"> 
-              <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent mt-10 py-0 px-4 font-medium text-sm text-gray-300 transition-all duration-500 ease-out hover:bg-red-600">
-                {/* Default state: Get In Touch */}
-                <span className="flex items-center gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-x-[-20px]">
-                  <span className="flex h-8 w-9 items-center justify-center rounded-lg bg-red-600">
+              <Link to="/contact">
+                <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent mt-10 py-0 px-4 font-medium text-sm text-gray-300 transition-all duration-500 ease-out hover:bg-red-600">
+                  {/* Default state: Get In Touch */}
+                  <span className="flex items-center gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-x-[-20px]">
+                    <span className="flex h-8 w-9 items-center justify-center rounded-lg bg-red-600">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className="h-5 w-5 text-white"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                        />
+                      </svg>
+                    </span>
+                    <span className="text-sm">Get In Touch</span>
+                  </span>
+
+                  {/* Hover state: Request a Callback slides in */}
+                  <span className="absolute flex items-center gap-1 opacity-0 -translate-x-20 transition-all duration-800 ease-out group-hover:opacity-300 group-hover:translate-x-0">
+                    <span className="text-sm text-white">
+                      Request a Callback
+                    </span>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -230,38 +373,17 @@ const About = () => {
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"
+                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
                       />
                     </svg>
                   </span>
-                  <span className="text-sm">Get In Touch</span>
-                </span>
-
-                {/* Hover state: Request a Callback slides in */}
-                <span className="absolute flex items-center gap-1 opacity-0 -translate-x-20 transition-all duration-800 ease-out group-hover:opacity-300 group-hover:translate-x-0">
-                  <span className="text-sm text-white">Request a Callback</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="h-5 w-5 text-white"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                    />
-                  </svg>
-                </span>
-              </button>
+                </button>
               </Link>
             </div>
           </div>
 
           <div className="absolute top-10 right-10 space-y-6 mt-70 mr-20">
-            <div className="bg-blue-800 text-white p-6 rounded-lg w-70  h-80 shadow-lg ">
+            <div className="bg-blue-800 text-white p-6 rounded-lg w-70 h-80 shadow-lg">
               <div className="bg-orange-500 w-10 h-10 flex items-center justify-center rounded-full mb-4">
                 <FaLightbulb />
               </div>
@@ -291,9 +413,9 @@ const About = () => {
             <img
               src={ladkiImg}
               alt="Smiling Person"
-              className="w-full h-[700px] object-contain relative z-10 "
+              className="w-full max-w-2xl mx-auto h-auto object-contain relative z-10"
             />
-            <hr className="h-px bg-gray-400 border-0 mt-0 w-full relative z-0 " />
+            <hr className="h-px bg-gray-400 border-0 mt-4 w-full relative z-0" />
           </div>
         </div>
       </div>

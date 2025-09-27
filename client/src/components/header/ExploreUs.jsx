@@ -41,7 +41,7 @@ const ExploreDropdown = () => {
       onMouseLeave={handleMouseLeave}
     >
       {/* Trigger Button */}
-      <button className="flex items-center space-x-1 text-gray-800 hover:text-blue-600 font-medium">
+      <button className="flex items-center space-x-1 text-gray-800 hover:text-blue-600 font-medium mt-2">
         <span className="mb-1 text-gray-500 transition-colors font-medium">
           Explore Us
         </span>
