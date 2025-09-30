@@ -313,9 +313,9 @@ const faqData = [
       <FormSection />
       <PricingSection plans={plans} />
       <AboutSection aboutContent={aboutContent} />
-      <BusinessStructureSection businessStructures={businessStructures} />
+      <BusinessStructureSection businessStructures={businessStructures}  title="Selecting the Ideal Business Structure for a Solo Entrepreneur"/>
       <DocumentsSection documents={documents} 
-      title="Documents Required for Registering Your Limited Liability Partnership Company"
+      title="Documents Required for Registering Your One Person Company"
       />
       <ComplianceSection complianceData={complianceData} />
       <StepsSection stepsData={stepsData} />

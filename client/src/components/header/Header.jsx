@@ -12,20 +12,28 @@ import OtherReg from "./OtherReg";
 
 import Watsup from "../../assets/icons/Whatsapp.png";
 import phoneIcon from "../../assets/icons/phone.png";
+import ezib from "../../assets/icons/logoezibbg.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Function to close mobile menu
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 w-full bg-white shadow-sm z-50">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-2">
+          <img src={ezib} alt="Logo" className="w-12 h-12" />
           <Link
             to="/"
             className="font-bold text-lg text-gray-800 hover:text-blue-600 transition-colors"
+            onClick={closeMobileMenu}
           >
-            EBIZ PANJIYAN
+            EBIZ PANJIYAN <div className="ml-0 mt-0">CENTER</div>
           </Link>
         </div>
 
@@ -55,7 +63,7 @@ const Header = () => {
           >
             <img src={Watsup} alt="WhatsApp" className="w-5 h-5" />
           </a>
-          <Link to="/contact">
+          <Link to="/contact" onClick={closeMobileMenu}>
             <button className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent py-1 px-5 font-medium text-sm text-[#001C35] transition-all duration-500 ease-out hover:bg-[#001C35]">
               <span className="flex items-center gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:-translate-x-5">
                 <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#001C35]">
@@ -97,28 +105,31 @@ const Header = () => {
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-gray-800 focus:outline-none"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Hamburger Icon (Mobile Only) */}
+        <div className="md:hidden">
+          <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 focus:outline-none">
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden bg-white border-t border-gray-200 px-6 py-4 space-y-4 transition-all duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden fixed top-22 left-0 h-[calc(100%-4rem)] w-full bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 ${
+          isOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
-        <CompanySet />
-        <Compliance />
-        <GstReturnDropdown />
-        <IpLegal />
-        <OtherReg />
-        <ExploreDropdown />
+        <div className="flex flex-col px-6 py-4 space-y-6">
+          <CompanySet onItemClick={closeMobileMenu} />
+          <Compliance onItemClick={closeMobileMenu} />
+          <GstReturnDropdown onItemClick={closeMobileMenu} />
+          <IpLegal onItemClick={closeMobileMenu} />
+          <OtherReg onItemClick={closeMobileMenu} />
+          <ExploreDropdown onItemClick={closeMobileMenu} />
+        </div>
       </div>
+
+      {/* Removed Blur Overlay */}
     </header>
   );
 };

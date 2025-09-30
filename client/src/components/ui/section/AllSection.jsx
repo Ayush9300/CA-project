@@ -2,23 +2,24 @@ import React from "react";
 import { ChevronDown, ChevronUp, Check, ArrowRight } from "lucide-react";
 import pvt from "../../ui/pvt.png";
 import img from "../../../assets/icons/download.png";
+
 export const HeroSection = ({ heroContent }) => {
   return (
-    <div className="space-y-6 mt-[150px]">
-      <p className="text-[#0058BA] font-medium">{heroContent.tagline}</p>
-      <h1 className="text-4xl font-bold text-gray-900">
+    <div className="space-y-4 sm:space-y-6 mt-[100px] sm:mt-[150px] px-4 sm:px-6">
+      <p className="text-[#0058BA] font-medium text-sm sm:text-base">{heroContent.tagline}</p>
+      <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
         Start Your <span className="text-blue-900">Business</span> & Unlock
         Growth Opportunities!
       </h1>
-      <ul className="space-y-4 text-gray-700">
+      <ul className="space-y-3 sm:space-y-4 text-gray-700 text-sm sm:text-base">
         {heroContent.highlights.map((highlight, index) => (
           <li key={index} className="flex items-start gap-2">
-            <span>👉</span>
-            <span>{highlight}</span>
+            <span className="flex-shrink-0">👉</span>
+            <span className="flex-1">{highlight}</span>
           </li>
         ))}
       </ul>
-      <p className="text-gray-600">{heroContent.description}</p>
+      <p className="text-gray-600 text-sm sm:text-base">{heroContent.description}</p>
     </div>
   );
 };
@@ -27,9 +28,9 @@ export const FormSection = () => {
   return (
     <div
       id="complianceForm"
-      className="bg-white shadow-md rounded-lg p-6 mt-[5rem]"
+      className="bg-white shadow-md rounded-lg p-4 sm:p-6 mt-[3rem] sm:mt-[5rem] mx-4 sm:mx-0"
     >
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">
+      <h2 className="text-lg sm:text-xl font-semibold text-gray-800 mb-4">
         Register Today, Secure Your Future
       </h2>
       <form className="space-y-4">
@@ -60,7 +61,7 @@ export const FormSection = () => {
             <input
               type="text"
               placeholder="Please select your current state"
-              className="w-full border-b border-gray-300 py-2 pr-8 focus:outline-none focus:border-blue-500"
+              className="w-full border-b border-gray-300 py-2 pr-8 focus:outline-none focus:border-blue-500 text-sm sm:text-base"
             />
             <div className="absolute right-2 top-2 text-gray-400">▼</div>
           </div>
@@ -68,16 +69,16 @@ export const FormSection = () => {
             This'll be used to meet state-specific compliance needs.
           </p>
         </div>
-        <div className="flex items-center space-x-2">
-          <input type="checkbox" id="terms" />
-          <label htmlFor="terms" className="text-sm text-gray-600">
+        <div className="flex items-start sm:items-center space-x-2">
+          <input type="checkbox" id="terms" className="mt-1 sm:mt-0 flex-shrink-0" />
+          <label htmlFor="terms" className="text-xs sm:text-sm text-gray-600">
             I agree to the terms of use of the taxbizlegal.com and the privacy
             policy
           </label>
         </div>
         <button
           type="submit"
-          className="w-full bg-blue-900 text-white py-2 rounded hover:bg-blue-800 transition-colors"
+          className="w-full bg-blue-900 text-white py-2.5 sm:py-2 rounded hover:bg-blue-800 transition-colors text-sm sm:text-base"
         >
           Enquire Now →
         </button>
@@ -85,89 +86,90 @@ export const FormSection = () => {
     </div>
   );
 };
+
 export const PricingSection = ({ plans, headings }) => {
   return (
-    <div className="md:col-span-2 mt-16 px-4 text-center">
+    <div className="md:col-span-2 mt-12 sm:mt-16 px-4 text-center">
       {headings?.tagline && (
-        <p className="text-[#0058BA] font-medium uppercase text-sm mb-5">
+        <p className="text-[#0058BA] font-medium uppercase text-xs sm:text-sm mb-4 sm:mb-5">
           {headings.tagline}
         </p>
       )}
 
       {headings?.title && (
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
           {headings.title}
         </h2>
       )}
 
       {headings?.subtitle && (
-        <h2 className="text-4xl font-bold text-[#0058BA]">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#0058BA]">
           {headings.subtitle}
         </h2>
       )}
 
       {headings?.description && (
-        <p className="text-gray-600 mt-7 mb-10 max-w-2xl mx-auto">
+        <p className="text-sm sm:text-base text-gray-600 mt-4 sm:mt-7 mb-8 sm:mb-10 max-w-2xl mx-auto px-4">
           {headings.description}
         </p>
       )}
 
-      <div className="min-h-screen py-16 px-5">
+      <div className="min-h-screen py-8 sm:py-16 px-2 sm:px-5">
         <div className="max-w-9xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {plans.map((plan) => (
               <div
                 key={plan.name}
-                className={`relative rounded-2xl p-9 shadow-xl transition-all duration-300 hover:scale-105 ${
+                className={`relative rounded-2xl p-6 sm:p-9 shadow-xl transition-all duration-300 hover:scale-105 ${
                   plan.popular ? "ring-2 ring-blue-700 ring-opacity-50" : ""
-                } bg-white flex flex-col h-full min-h-[750px]`}
+                } bg-white flex flex-col h-full min-h-[650px] sm:min-h-[750px]`}
               >
                 {plan.popular && (
-                  <div className="absolute -top-4 right-6 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold transform rotate-12">
+                  <div className="absolute -top-3 sm:-top-4 right-4 sm:right-6 bg-blue-600 text-white px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold transform rotate-12">
                     POPULAR
                   </div>
                 )}
 
                 <div
-                  className={`w-16 h-16 mx-auto mb-6 rounded-2xl ${plan.color} flex items-center justify-center text-2xl`}
+                  className={`w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 rounded-2xl ${plan.color} flex items-center justify-center text-xl sm:text-2xl`}
                 >
                   {plan.icon}
                 </div>
 
                 <h3
-                  className={`text-lg font-bold text-center mb-6 ${plan.textColor}`}
+                  className={`text-base sm:text-lg font-bold text-center mb-4 sm:mb-6 ${plan.textColor}`}
                 >
                   {plan.name}
                 </h3>
 
-                <div className="text-center mb-8">
-                  <div className="text-4xl font-bold text-gray-900 mb-2">
+                <div className="text-center mb-6 sm:mb-8">
+                  <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">
                     {plan.price}
                   </div>
-                  <div className="text-gray-500 text-sm">{plan.gst}</div>
+                  <div className="text-gray-500 text-xs sm:text-sm">{plan.gst}</div>
                 </div>
 
-                <div className="space-y-2 text-sm font-medium flex-1">
+                <div className="space-y-2 text-xs sm:text-sm font-medium flex-1">
                   {plan.features.map((feature, featureIndex) => (
                     <div
                       key={featureIndex}
-                      className="flex items-center space-x-3"
+                      className="flex items-center space-x-2 sm:space-x-3"
                     >
-                      <div className="flex-shrink-0 ">
-                        <Check className="w-3 h-3 text-green-800 " />
+                      <div className="flex-shrink-0">
+                        <Check className="w-3 h-3 text-green-800" />
                       </div>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-700 text-left">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 <button
-                  className={`w-full py-2 rounded-lg font-semibold text-sm mt-auto transition-all duration-300 flex items-center justify-center space-x-2 ${plan.buttonStyle}`}
+                  className={`w-full py-2 sm:py-2 rounded-lg font-semibold text-xs sm:text-sm mt-6 sm:mt-auto transition-all duration-300 flex items-center justify-center space-x-2 ${plan.buttonStyle}`}
                 >
                   <span>
                     Get {plan.name.charAt(0) + plan.name.slice(1).toLowerCase()}
                   </span>
-                  <ArrowRight className="w-5 h-5" />
+                  <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
                 </button>
               </div>
             ))}
@@ -180,51 +182,52 @@ export const PricingSection = ({ plans, headings }) => {
 
 export const AboutSection = ({ aboutContent }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        <div className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900 leading-tight">
+    <div className="md:col-span-2 mt-12 sm:mt-20 px-4">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-center">
+        <div className="space-y-4 sm:space-y-6">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
             {aboutContent.title}
           </h2>
-          <div className="space-y-4 text-gray-700 leading-relaxed">
+          <div className="space-y-3 sm:space-y-4 text-sm sm:text-base text-gray-700 leading-relaxed">
             {aboutContent.paragraphs.map((paragraph, index) => (
               <p key={index}>{paragraph}</p>
             ))}
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-6 md:mt-0">
           <img
             src={pvt}
             alt="Private Limited Company Illustration"
-            className="w-full h-auto"
+            className="w-full max-w-md h-auto"
           />
         </div>
       </div>
     </div>
   );
 };
-export const BusinessStructureSection = ({ businessStructures }) => {
+
+export const BusinessStructureSection = ({ businessStructures, title }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+    <div className="md:col-span-2 mt-12 sm:mt-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 leading-tight">
-            Selecting the Ideal Business Structure for Your Company
+        <div className="text-center mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight">
+            {title}
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
           {businessStructures.map((structure, index) => (
             <div
               key={index}
-              className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow duration-300"
+              className="bg-white rounded-lg shadow-lg p-6 sm:p-8 hover:shadow-xl transition-shadow duration-300"
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-4">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
                 {structure.title.split(structure.highlight)[0]}
                 <span className="text-blue-600"> {structure.highlight}</span>
                 {structure.title.split(structure.highlight)[1]}
               </h3>
-              <div className="space-y-4 text-gray-700 leading-relaxed text-sm">
+              <div className="space-y-3 sm:space-y-4 text-gray-700 leading-relaxed text-xs sm:text-sm">
                 {structure.content.map((paragraph, idx) => (
                   <p key={idx}>{paragraph}</p>
                 ))}
@@ -236,37 +239,38 @@ export const BusinessStructureSection = ({ businessStructures }) => {
     </div>
   );
 };
-export const DocumentsSection = ({ documents,title }) => {
+
+export const DocumentsSection = ({ documents, title }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+    <div className="md:col-span-2 mt-12 sm:mt-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-gradient-to-r from-blue-100 to-blue-50 rounded-3xl p-8 md:p-12">
-          <div className="text-start mb-12">
-            <h2 className="text-3xl md:text-3xl font-medium text-gray-900 leading-tight">
+        <div className="bg-gradient-to-r from-blue-100 to-blue-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12">
+          <div className="text-start mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-medium text-gray-900 leading-tight">
               {title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="flex justify-center">
-              <div className="w-100 h-64 relative">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
+            <div className="flex justify-center order-2 md:order-1">
+              <div className="w-full sm:w-100 h-48 sm:h-64 relative">
                 <img
                   src={img}
                   alt="Documents illustration"
-                  className="w-[600px] h-full object-cover"
+                  className="w-full sm:w-[600px] h-full object-contain sm:object-cover"
                 />
               </div>
             </div>
 
-            <div className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="space-y-4 sm:space-y-6 order-1 md:order-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 {documents.map((doc) => (
-                  <div key={doc.id} className="flex items-center space-x-4">
-                    <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center font-medium text-lg text-gray-600">
+                  <div key={doc.id} className="flex items-center space-x-3 sm:space-x-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-gray-200 rounded-full flex items-center justify-center font-medium text-base sm:text-lg text-gray-600 flex-shrink-0">
                       {doc.id}.
                     </div>
                     <div>
-                      <h3 className="font-medium text-black">{doc.title}</h3>
+                      <h3 className="font-medium text-sm sm:text-base text-black">{doc.title}</h3>
                     </div>
                   </div>
                 ))}
@@ -278,40 +282,41 @@ export const DocumentsSection = ({ documents,title }) => {
     </div>
   );
 };
+
 export const ComplianceSection = ({ complianceData }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+    <div className="md:col-span-2 mt-12 sm:mt-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 leading-tight mb-8">
+        <div className="mb-8 sm:mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-6 sm:mb-8">
             {complianceData.title}
           </h2>
 
-          <div className="mb-12">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
+          <div className="mb-8 sm:mb-12">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">
               {complianceData.whyMatters.title}
             </h3>
-            <p className="text-gray-700 leading-relaxed max-w-4xl">
+            <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-4xl">
               {complianceData.whyMatters.description}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+            <div className="space-y-6 sm:space-y-8">
               {complianceData.items.left.map((item, index) => (
-                <div key={index} className="border-b border-gray-200 pb-6">
-                  <div className="flex justify-between items-start">
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
+                <div key={index} className="border-b border-gray-200 pb-4 sm:pb-6">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-900">
                       {item.title}
                     </h4>
-                    <p className="text-gray-700 text-right text-sm max-w-xs">
+                    <p className="text-gray-700 text-xs sm:text-sm sm:text-right sm:max-w-xs">
                       {item.description}
                     </p>
                   </div>
                 </div>
               ))}
               <div className="">
-                <div className="flex justify-between items-start">
+                <div className="flex justify-start sm:justify-between items-start">
                   <button
                     onClick={() => {
                       const formSection =
@@ -321,17 +326,17 @@ export const ComplianceSection = ({ complianceData }) => {
                         block: "start",
                       });
                     }}
-                    className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent py-1 px-5 font-medium text-sm text-[#001C35] transition-all duration-500 ease-out hover:bg-[#001C35]"
+                    className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-transparent py-2 px-4 sm:py-1 sm:px-5 font-medium text-xs sm:text-sm text-[#001C35] transition-all duration-500 ease-out hover:bg-[#001C35]"
                   >
-                    <span className="flex items-center gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-x-[-20px]">
-                      <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#001C35]">
+                    <span className="flex items-center gap-2 sm:gap-3 transition-all duration-300 ease-out group-hover:opacity-0 group-hover:translate-x-[-20px]">
+                      <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg bg-[#001C35]">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           fill="none"
                           viewBox="0 0 24 24"
                           strokeWidth={2}
                           stroke="currentColor"
-                          className="h-5 w-5 text-white"
+                          className="h-4 w-4 sm:h-5 sm:w-5 text-white"
                         >
                           <path
                             strokeLinecap="round"
@@ -340,13 +345,13 @@ export const ComplianceSection = ({ complianceData }) => {
                           />
                         </svg>
                       </span>
-                      <span className="text-[16px]">
+                      <span className="text-sm sm:text-[16px]">
                         Get Help with Compliance
                       </span>
                     </span>
 
                     <span className="absolute flex items-center gap-1 opacity-0 -translate-x-20 transition-all duration-800 ease-out group-hover:opacity-300 group-hover:translate-x-0">
-                      <span className="text-[16px] text-white">
+                      <span className="text-sm sm:text-[16px] text-white">
                         Get Help with Compliance
                       </span>
                       <svg
@@ -355,7 +360,7 @@ export const ComplianceSection = ({ complianceData }) => {
                         viewBox="0 0 24 24"
                         strokeWidth={2}
                         stroke="currentColor"
-                        className="h-5 w-5 text-white"
+                        className="h-4 w-4 sm:h-5 sm:w-5 text-white"
                       >
                         <path
                           strokeLinecap="round"
@@ -369,14 +374,14 @@ export const ComplianceSection = ({ complianceData }) => {
               </div>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-6 sm:space-y-8">
               {complianceData.items.right.map((item, index) => (
-                <div key={index} className="border-b border-gray-200 pb-6">
-                  <div className="flex justify-between items-start">
-                    <h4 className="text-lg font-bold text-gray-900 mb-2">
+                <div key={index} className="border-b border-gray-200 pb-4 sm:pb-6">
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4">
+                    <h4 className="text-base sm:text-lg font-bold text-gray-900">
                       {item.title}
                     </h4>
-                    <p className="text-gray-700 text-right text-sm max-w-xs">
+                    <p className="text-gray-700 text-xs sm:text-sm sm:text-right sm:max-w-xs">
                       {item.description}
                     </p>
                   </div>
@@ -389,34 +394,35 @@ export const ComplianceSection = ({ complianceData }) => {
     </div>
   );
 };
+
 export const StepsSection = ({ stepsData }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+    <div className="md:col-span-2 mt-12 sm:mt-20 px-4">
       <div className="max-w-7xl mx-auto">
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full opacity-20 transform translate-x-32 -translate-y-32"></div>
-          <div className="absolute bottom-0 right-0 w-48 h-48 bg-indigo-200 rounded-full opacity-30 transform translate-x-24 translate-y-24"></div>
+        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-48 h-48 sm:w-64 sm:h-64 bg-blue-200 rounded-full opacity-20 transform translate-x-24 sm:translate-x-32 -translate-y-24 sm:-translate-y-32"></div>
+          <div className="absolute bottom-0 right-0 w-32 h-32 sm:w-48 sm:h-48 bg-indigo-200 rounded-full opacity-30 transform translate-x-16 sm:translate-x-24 translate-y-16 sm:translate-y-24"></div>
 
           <div className="relative z-10">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-6">
+            <div className="text-center mb-8 sm:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 leading-tight mb-4 sm:mb-6">
                 {stepsData.title}
               </h2>
-              <p className="text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              <p className="text-sm sm:text-base text-gray-700 leading-relaxed max-w-4xl mx-auto px-2">
                 {stepsData.description}
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 sm:gap-8 mb-8 sm:mb-12">
               {stepsData.steps.map((step, index) => (
                 <div key={index} className="text-center">
-                  <div className="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-lg mb-4 mx-auto">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold text-base sm:text-lg mb-3 sm:mb-4 mx-auto">
                     {step.number}
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-gray-700 text-sm leading-relaxed">
+                  <p className="text-gray-700 text-xs sm:text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </div>
@@ -428,29 +434,30 @@ export const StepsSection = ({ stepsData }) => {
     </div>
   );
 };
+
 export const FAQSection = ({ faqData, openIndex, toggleFAQ }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+    <div className="md:col-span-2 mt-12 sm:mt-20 px-4">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6 sm:mb-8 text-center">
           Frequently Asked Questions
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {faqData.map((faq, index) => (
             <div key={index} className="border-b border-gray-300">
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full flex justify-between items-center py-4 text-left text-gray-800 transition-colors"
+                className="w-full flex justify-between items-center py-3 sm:py-4 text-left text-gray-800 transition-colors text-sm sm:text-base"
               >
-                <span>{faq.question}</span>
+                <span className="pr-4">{faq.question}</span>
                 {openIndex === index ? (
-                  <ChevronUp className="w-5 h-5" />
+                  <ChevronUp className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 ) : (
-                  <ChevronDown className="w-5 h-5" />
+                  <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
                 )}
               </button>
               {openIndex === index && (
-                <div className="pb-4 text-gray-600 text-sm">{faq.answer}</div>
+                <div className="pb-3 sm:pb-4 text-gray-600 text-xs sm:text-sm">{faq.answer}</div>
               )}
             </div>
           ))}

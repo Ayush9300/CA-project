@@ -1,6 +1,8 @@
 import { FaFacebook, FaInstagramSquare, FaLinkedin, FaWhatsapp } from "react-icons/fa";
 import { RiVisaLine } from "react-icons/ri";
 import master from "../../assets/image 30.png";
+import ezib from "../../assets/icons/logoezibbg.png";
+
 
 export default function Footer() {
   return (
@@ -9,6 +11,7 @@ export default function Footer() {
         {/* Logo + Tagline */}
         <div>
           <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+            <img src={ezib} alt="Logo" className="w-11 h-11" />
             <span className="text-blue-400"> EBIZ PANJIYAN CENTER</span>
           </h2>
           <p className="mt-4 text-sm leading-6 text-gray-300 text-left">

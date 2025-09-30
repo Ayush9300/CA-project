@@ -1,8 +1,60 @@
 import React from "react";
-import { Link } from "react-router-dom"; // अगर आप react-router-dom का उपयोग कर रहे हैं
-import { RotateCcw } from "lucide-react";
+import { Link } from "react-router-dom";
+import { RotateCcw, ChevronDown, ChevronRight } from "lucide-react";
 
-const Dropdown = ({ items = [], className = "" }) => {
+// Mobile Dropdown Component
+const MobileDropdown = ({ items = [], isOpen, onClose, onItemClick, title = "Menu" }) => {
+  if (!isOpen) return null;
+
+  const handleLinkClick = () => {
+    if (onClose) onClose(); // Dropdown close
+    if (onItemClick) onItemClick(); // Mobile menu close
+  };
+
+  return (
+    <div className="fixed inset-0 bg-white z-50 overflow-y-auto">
+      {/* Header */}
+      <div className="sticky top-0 bg-white border-b border-gray-200 px-4 py-3 flex items-center justify-between">
+        <h2 className="text-base font-semibold text-gray-800">{title}</h2>
+        <button
+          onClick={onClose}
+          className="text-gray-500 hover:text-gray-700"
+        >
+          <ChevronDown className="w-6 h-6" />
+        </button>
+      </div>
+
+      {/* Content - Simple List */}
+      <div className="px-4 py-3">
+        {items.map((section, idx) => (
+          <div key={idx} className="mb-6">
+            {/* Section Title */}
+            <h3 className="font-semibold text-sm text-blue-600 mb-3">
+              {section.title}
+            </h3>
+
+            {/* Section Items - Simple List */}
+            <div className="space-y-0">
+              {section.items.map((item, index) => (
+                <Link
+                  key={index}
+                  to={item.path || "#"}
+                  onClick={handleLinkClick}
+                  className="flex items-center gap-3 py-3 border-b border-gray-200 last:border-b-0"
+                >
+                  <ChevronRight className="w-4 h-4 text-blue-500 flex-shrink-0" />
+                  <span className="text-sm text-gray-700">{item.name}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const Dropdown = ({ items = [], className = "", simpleView = false }) => {
   const gridColsClass =
     {
       1: "grid-cols-1",
@@ -13,6 +65,36 @@ const Dropdown = ({ items = [], className = "" }) => {
       6: "grid-cols-6",
     }[items.length] || "grid-cols-1";
 
+  if (simpleView) {
+    // Simple plain list view (for mobile or Company Setup)
+    return (
+      <div
+        className={`absolute top-full mt-4 -translate-x-1/2 max-w-screen-xl bg-white border border-gray-100 z-50 rounded-xl overflow-hidden ${className}`}
+      >
+        <div className="p-4 space-y-1">
+          {items.map((section, idx) => (
+            <div key={idx}>
+              <h3 className="font-bold mb-2 text-sm text-[#0658A3]">{section.title}</h3>
+              <ul className="list-none ml-2">
+                {section.items.map((item, index) => (
+                  <li key={index} className="py-1 border-b border-gray-200 last:border-none">
+                    <Link
+                      to={item.path || "#"}
+                      className="block text-gray-800 hover:text-blue-600 transition-colors"
+                    >
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // Original card + icon version for desktop
   return (
     <div
       className={`absolute top-full mt-4 -translate-x-1/2 max-w-screen-xl bg-white shadow-2xl border border-gray-100 z-50 rounded-xl overflow-hidden ${className}`}
@@ -43,7 +125,7 @@ const Dropdown = ({ items = [], className = "" }) => {
               <div className="space-y-1">
                 {section.items.map((item, idx) => (
                   <Link
-                    to={item.path || "#"} // अगर path नहीं है तो "#" पर जाएगा
+                    to={item.path || "#"}
                     key={idx}
                     className={`group block cursor-pointer hover:bg-blue-50 border border-transparent hover:border-black rounded-lg px-3 py-2 transition-all duration-200`}
                   >
@@ -105,4 +187,5 @@ const Dropdown = ({ items = [], className = "" }) => {
   );
 };
 
+export { MobileDropdown };
 export default Dropdown;
