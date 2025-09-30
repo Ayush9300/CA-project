@@ -18,108 +18,106 @@ import {
 const PrivateLimited = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
- const pricingHeadings = {
-  tagline: "Transparent Pricing, No Hidden Charges",
-  title: "Choose the Right Plan",
-  subtitle: "For your Sole Proprietorship Company",
-  description:
-    "Get your Sole Proprietorship Company registered effortlessly with our tailored pricing plans. Start your journey today!",
-};
-
+  const pricingHeadings = {
+    tagline: "Transparent Pricing, No Hidden Charges",
+    title: "Choose the Right Plan",
+    subtitle: "For your Sole Proprietorship Company",
+    description:
+      "Get your Sole Proprietorship Company registered effortlessly with our tailored pricing plans. Start your journey today!",
+  };
 
   // Data arrays
- const heroContent = {
-  tagline: "Start Your Sole Proprietorship with Ease!",
-  title: "Register Your Sole Proprietorship & Unlock Growth Opportunities!",
-  highlights: [
-    "100% Online, Hassle-Free Registration Process",
-    "Expert Guidance & Legal Compliance Assistance",
-    "Quick Turnaround & Transparent Pricing",
-  ],
-  description:
-    "Experience seamless sole proprietorship registration with our expert consultants. We handle paperwork, legal formalities, and compliance, ensuring a smooth process. Focus on growth while we simplify your journey. Get started today!",
-};
-
-
-const plans = [
-  {
-    name: "BASIC",
-    price: "₹699",
-    gst: "+ 18% GST",
-    icon: <BasicIcon />,
-    textColor: "text-gray-700",
-    buttonStyle: "bg-gray-800 text-white hover:bg-gray-900",
-    features: [
-      "GST Registration",
+  const heroContent = {
+    tagline: "Start Your Sole Proprietorship with Ease!",
+    title: "Register Your Sole Proprietorship & Unlock Growth Opportunities!",
+    highlights: [
+      "100% Online, Hassle-Free Registration Process",
+      "Expert Guidance & Legal Compliance Assistance",
+      "Quick Turnaround & Transparent Pricing",
     ],
-  },
-  {
-    name: "STANDARD",
-    price: "₹8999",
-    gst: "+ 18% GST",
-    icon: <StanderdIcon />,
-    textColor: "text-gray-700",
-    buttonStyle: "bg-gray-800 text-white hover:bg-gray-900",
-    popular: true,
-    features: [
-      "GST Registration",
-      "GST Return for 1 Year (upto 100 invoices)",
-    ],
-  },
-  {
-    name: "PREMIUM",
-    price: "₹10499",
-    gst: "+ 18% GST",
-    icon: <PrimiumIcon />,
-    textColor: "text-gray-700",
-    buttonStyle: "bg-gray-800 text-white hover:bg-gray-900",
-    features: [
-      "GST Registration",
-      "GST Return for 1 Year (upto 100 invoices)",
-      "Income Tax Returns (Turnover upto 20 lakhs)",
-    ],
-  },
-];
+    description:
+      "Experience seamless sole proprietorship registration with our expert consultants. We handle paperwork, legal formalities, and compliance, ensuring a smooth process. Focus on growth while we simplify your journey. Get started today!",
+  };
+  const titleArray = [
+    "Start Your",
+    "Business",
+    "& Unlock Growth Opportunities!",
+  ];
 
+  const plans = [
+    {
+      name: "BASIC",
+      price: "₹699",
+      gst: "+ 18% GST",
+      icon: <BasicIcon />,
+      textColor: "text-gray-700",
+      buttonStyle: "bg-gray-800 text-white hover:bg-gray-900",
+      features: ["GST Registration"],
+    },
+    {
+      name: "STANDARD",
+      price: "₹8999",
+      gst: "+ 18% GST",
+      icon: <StanderdIcon />,
+      textColor: "text-gray-700",
+      buttonStyle: "bg-gray-800 text-white hover:bg-gray-900",
+      popular: true,
+      features: [
+        "GST Registration",
+        "GST Return for 1 Year (upto 100 invoices)",
+      ],
+    },
+    {
+      name: "PREMIUM",
+      price: "₹10499",
+      gst: "+ 18% GST",
+      icon: <PrimiumIcon />,
+      textColor: "text-gray-700",
+      buttonStyle: "bg-gray-800 text-white hover:bg-gray-900",
+      features: [
+        "GST Registration",
+        "GST Return for 1 Year (upto 100 invoices)",
+        "Income Tax Returns (Turnover upto 20 lakhs)",
+      ],
+    },
+  ];
 
- const aboutContent = {
-  title: "All you need to know about Sole Proprietorship",
-  paragraphs: [
-    "A Sole Proprietorship is one of the simplest and most common forms of business structures in India. It is owned, managed, and controlled by a single individual. Unlike a Private Limited Company or LLP, it is not a separate legal entity but a business run by an individual. The owner has complete control over the business, makes all decisions, and retains all profits. This structure is ideal for small-scale businesses, freelancers, and individual entrepreneurs. It is easy to set up and offers operational flexibility but comes with the drawback of unlimited liability for the owner.",
-    "Taxbizlegal.com is a trusted platform that provides end-to-end services for Sole Proprietorship Company registration, including incorporation, compliance, advisory, and consultancy. The registration process is quick, affordable, and simple, ensuring a smooth start for your business.",
-    "In addition to Sole Proprietorship registration, we also offer services for Partnership Registration, LLP Incorporation, One Person Company registration, and more. Contact us for a free consultation at info@taxbizlegal.com or call our compliance manager at 9403892279.",
-  ],
-};
-
-
- const businessStructures = [
-  {
-    title: "Key Features of a Sole Proprietorship",
-    highlight: "Proprietorship",
-    content: [
-      "Single Owner, Full Control: A sole proprietorship is owned and managed by a single individual who exercises full control over all business operations and decision-making. It’s the simplest and most direct form of business ownership, making it ideal for small or low-risk ventures.",
-      "No Legal Separation & Unlimited Liability: The business and the owner are legally the same. This means the owner is personally responsible for all debts, liabilities, or legal issues arising from the business. There is no mandatory share capital or formal governance structure required to operate the business.",
-      "Simple Operations & Limited Scalability: Sole proprietorships are easy to start and close, involving minimal compliance and formalities, making them highly flexible. However, growth potential is limited, and scaling may require shifting to a more structured entity like an LLP or Private Limited Company.",
+  const aboutContent = {
+    title: "All you need to know about Sole Proprietorship",
+    paragraphs: [
+      "A Sole Proprietorship is one of the simplest and most common forms of business structures in India. It is owned, managed, and controlled by a single individual. Unlike a Private Limited Company or LLP, it is not a separate legal entity but a business run by an individual. The owner has complete control over the business, makes all decisions, and retains all profits. This structure is ideal for small-scale businesses, freelancers, and individual entrepreneurs. It is easy to set up and offers operational flexibility but comes with the drawback of unlimited liability for the owner.",
+      "Taxbizlegal.com is a trusted platform that provides end-to-end services for Sole Proprietorship Company registration, including incorporation, compliance, advisory, and consultancy. The registration process is quick, affordable, and simple, ensuring a smooth start for your business.",
+      "In addition to Sole Proprietorship registration, we also offer services for Partnership Registration, LLP Incorporation, One Person Company registration, and more. Contact us for a free consultation at info@taxbizlegal.com or call our compliance manager at 9403892279.",
     ],
-  },
-  {
-    title: "One Person Company (OPC)",
-    highlight: "OPC",
-    content: [
-      "An OPC allows a single individual to operate a corporate entity with limited liability while maintaining full control. It is ideal for solo entrepreneurs who want the benefits of a company without needing partners or co-founders.",
-      "Registered under the Companies Act, 2013, an OPC is a separate legal entity that can own assets, enter into contracts, and sue or be sued independently of the owner, ensuring continuity and credibility.",
-    ],
-  },
-  {
-    title: "Private Limited Company",
-    highlight: "Private Ltd",
-    content: [
-      "A Private Limited Company requires at least two directors and shareholders. It offers strong credibility, better funding opportunities, and protection of personal assets through limited liability.",
-      "While not ideal for solo founders initially, OPCs can be converted into Private Limited Companies as the business grows, allowing for scalability without compromising compliance or governance standards.",
-    ],
-  },
-];
+  };
 
+  const businessStructures = [
+    {
+      title: "Key Features of a Sole Proprietorship",
+      highlight: "Proprietorship",
+      content: [
+        "Single Owner, Full Control: A sole proprietorship is owned and managed by a single individual who exercises full control over all business operations and decision-making. It’s the simplest and most direct form of business ownership, making it ideal for small or low-risk ventures.",
+        "No Legal Separation & Unlimited Liability: The business and the owner are legally the same. This means the owner is personally responsible for all debts, liabilities, or legal issues arising from the business. There is no mandatory share capital or formal governance structure required to operate the business.",
+        "Simple Operations & Limited Scalability: Sole proprietorships are easy to start and close, involving minimal compliance and formalities, making them highly flexible. However, growth potential is limited, and scaling may require shifting to a more structured entity like an LLP or Private Limited Company.",
+      ],
+    },
+    {
+      title: "One Person Company (OPC)",
+      highlight: "OPC",
+      content: [
+        "An OPC allows a single individual to operate a corporate entity with limited liability while maintaining full control. It is ideal for solo entrepreneurs who want the benefits of a company without needing partners or co-founders.",
+        "Registered under the Companies Act, 2013, an OPC is a separate legal entity that can own assets, enter into contracts, and sue or be sued independently of the owner, ensuring continuity and credibility.",
+      ],
+    },
+    {
+      title: "Private Limited Company",
+      highlight: "Private Ltd",
+      content: [
+        "A Private Limited Company requires at least two directors and shareholders. It offers strong credibility, better funding opportunities, and protection of personal assets through limited liability.",
+        "While not ideal for solo founders initially, OPCs can be converted into Private Limited Companies as the business grows, allowing for scalability without compromising compliance or governance standards.",
+      ],
+    },
+  ];
 
   const documents = [
     {
@@ -297,7 +295,7 @@ const plans = [
 
   return (
     <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start min-h-screen">
-      <HeroSection heroContent={heroContent} />
+      <HeroSection heroContent={heroContent}  title={titleArray}/>
       <FormSection />
       <PricingSection plans={plans} headings={pricingHeadings} />
       <AboutSection aboutContent={aboutContent} />

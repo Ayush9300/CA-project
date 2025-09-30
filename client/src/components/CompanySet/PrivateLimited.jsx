@@ -19,7 +19,7 @@ const PrivateLimited = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
 
-   const pricingHeadings = {
+  const pricingHeadings = {
     tagline:
       "Transparent Pricing, No Hidden Charges",
     title: "Choose the Right Plan",
@@ -41,6 +41,11 @@ const PrivateLimited = () => {
     description:
       "Focus on growth while we simplify your journey. Get started today!",
   };
+    const titleArray = [
+      "Start Your",
+      "Business",
+      "& Unlock Growth Opportunities!",
+    ];
 
   const plans = [
     {
@@ -322,14 +327,15 @@ const PrivateLimited = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start min-h-screen">
-      <HeroSection heroContent={heroContent} />
+      
+      <HeroSection heroContent={heroContent} title={titleArray} />
       <FormSection />
-      <PricingSection plans={plans}  headings={pricingHeadings} />
+      <PricingSection plans={plans} headings={pricingHeadings} />
       <AboutSection aboutContent={aboutContent} />
       <BusinessStructureSection businessStructures={businessStructures} title="Selecting the Ideal Business Structure for Your Company" />
       <DocumentsSection
         documents={documents}
-         title="Documents Required for Registering Your Private Limited Company"
+        title="Documents Required for Registering Your Private Limited Company"
       />
 
       <ComplianceSection complianceData={complianceData} />
