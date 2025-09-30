@@ -126,9 +126,9 @@ export default function ContactPage() {
                 <div className="ml-3">
                   <h3 className="text-lg font-medium text-gray-900">Phone</h3>
                   <p className="mt-1 text-gray-600">
-                    +91 7223077806
+                    +91 8602222494
                     <br />
-                    Mon-Fri, 9am-5pm
+                    Mon-Fri, 9am-7pm
                   </p>
                 </div>
               </div>

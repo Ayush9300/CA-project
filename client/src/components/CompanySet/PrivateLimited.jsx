@@ -332,7 +332,7 @@ const PrivateLimited = () => {
       <FormSection />
       <PricingSection plans={plans} headings={pricingHeadings} />
       <AboutSection aboutContent={aboutContent} />
-      <BusinessStructureSection businessStructures={businessStructures} />
+      <BusinessStructureSection businessStructures={businessStructures} title="Selecting the Ideal Business Structure for Your Company" />
       <DocumentsSection
         documents={documents}
         title="Documents Required for Registering Your Private Limited Company"

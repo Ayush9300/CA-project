@@ -305,7 +305,7 @@ const businessStructures = [
       <FormSection />
       <PricingSection plans={plans} />
       <AboutSection aboutContent={aboutContent} />
-      <BusinessStructureSection businessStructures={businessStructures} />
+      <BusinessStructureSection businessStructures={businessStructures} title="Key Features of Limited Liability Partnership (LLP)" />
       <DocumentsSection documents={documents} 
       title="Documents Required for Registering Your Limited Liability Partnership Company"
       />

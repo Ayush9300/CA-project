@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import Dropdown from "../ui/Dropdown";
+import Dropdown, { MobileDropdown } from "../ui/Dropdown";
 
-const CompanySetupDropdown = () => {
+const CompanySetupDropdown = ({ onItemClick }) => {
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef(null);
   const timeoutRef = useRef(null);
 
@@ -85,6 +86,17 @@ const CompanySetupDropdown = () => {
     },
   ];
 
+  // Check for mobile view
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Clear timer when unmounting
   useEffect(() => {
     return () => {
@@ -93,25 +105,32 @@ const CompanySetupDropdown = () => {
   }, []);
 
   const handleMouseEnter = () => {
-    // Cancel timer if mouse comes back
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setOpen(true);
   };
 
   const handleMouseLeave = () => {
-    // Start 10-second timer to close dropdown
     timeoutRef.current = setTimeout(() => setOpen(false), 200);
+  };
+
+  // Handle item click - closes dropdown and mobile menu
+  const handleItemClick = () => {
+    setOpen(false);
+    if (onItemClick) onItemClick();
   };
 
   return (
     <div
       ref={dropdownRef}
       className="relative inline-block"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+      onMouseLeave={!isMobile ? handleMouseLeave : undefined}
     >
       {/* Trigger Button */}
-      <button className="items-center px-2 py-2 hover:text-blue-600 text-gray-600 font-medium transition-colors duration-200 relative flex">
+      <button
+        className="items-center px-2 py-2 hover:text-blue-600 text-gray-600 font-medium transition-colors duration-200 relative flex"
+        onClick={() => setOpen((prev) => !prev)}
+      >
         <span>Company Setup</span>
         <FiChevronDown
           className={`ml-1 mt-1 transition-transform duration-200 ${
@@ -120,10 +139,24 @@ const CompanySetupDropdown = () => {
         />
       </button>
 
-      {/* Dropdown */}
-      {open && (
-        <div className="absolute top-full ml-[500px] z-50 mt-1">
-          <Dropdown items={menuData} className="w-[1200px] h-[505px]" />
+      {/* Mobile Dropdown */}
+      {isMobile && (
+        <MobileDropdown
+          items={menuData}
+          isOpen={open}
+          onClose={() => setOpen(false)}
+          onItemClick={handleItemClick}
+          title="Company Setup"
+        />
+      )}
+
+      {/* Desktop Dropdown */}
+      {!isMobile && open && (
+        <div className="absolute top-full ml-[500px] z-50 mt-3">
+          <Dropdown 
+            items={menuData}
+            className="w-[1200px] h-[505px]" 
+          />
         </div>
       )}
     </div>

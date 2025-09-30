@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Button from "../../components/ui/Button";
+import arrow from "../../assets/icons/arrowdown.png";
 
 const ProcessSteps = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -72,7 +73,7 @@ const ProcessSteps = () => {
                   key={step.number}
                   className="flex flex-col items-start gap-6 relative"
                 >
-                  <div className="flex-shrink-0 flex flex-col items-center">
+                  <div className="flex-shrink-0 flex flex-col items-center ">
                     <div className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center shadow-lg">
                       <span className="text-white text-lg sm:text-2xl font-bold">
                         {step.number}
@@ -98,15 +99,25 @@ const ProcessSteps = () => {
                   transition={{ duration: 0.8, delay: index * 0.2 }}
                   viewport={{ once: false, amount: 0.3 }}
                 >
-                  <div className="flex-shrink-0 relative z-10 flex flex-col items-center lg:items-start">
+                  <div className="flex-shrink-0 relative z-10 flex flex-col items-center lg:items-start ">
                     <div className="w-10 h-10 bg-blue-800 rounded-full flex items-center justify-center shadow-lg relative">
                       <span className="text-white text-lg sm:text-2xl font-bold">
                         {step.number}
                       </span>
                     </div>
-                    {index < steps.length - 1 && (
-                      <div className="flex flex-col items-center mt-2 animate-bounce-slow">
-                        <span className="text-blue-800 text-sm">▼</span>
+                    {index === steps.length - 1 && (
+                      <div className="  flex flex-col items-center mt-9 animate-bounce-slow ml-2 shrink-0 ">
+                        <span className="text-blue-800 text-sm">
+                          <img
+                            src={arrow}
+                            alt="arrow"
+                            style={{
+                              filter:
+                                "invert(51%) sepia(91%) saturate(949%) hue-rotate(180deg) brightness(100%) contrast(75%)",
+                            }}
+                            className="w-6 h-6"
+                          />
+                        </span>
                       </div>
                     )}
                   </div>

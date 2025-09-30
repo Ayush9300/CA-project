@@ -236,7 +236,7 @@ export const FormSection = () => {
 };
 export const PricingSection = ({ plans, headings }) => {
   return (
-    <div className=" min-w-7xl mx-auto md:col-span-2 mt-10 px-4 text-center">
+    <div className="min-w-7xl mx-auto md:col-span-2 mt-10 px-4 text-center">
       {headings?.tagline && (
         <p className="text-[#0058BA] font-medium uppercase text-sm mb-5">
           {headings.tagline}
@@ -274,6 +274,7 @@ export const PricingSection = ({ plans, headings }) => {
                 POPULAR
               </div>
             )}
+
             <div
               className={`w-16 h-16 mx-auto mb-6 rounded-2xl ${plan.color} flex items-center justify-center text-2xl`}
             >
@@ -297,7 +298,7 @@ export const PricingSection = ({ plans, headings }) => {
             <div className="flex-1 flex flex-col space-y-2">
               {plan.features.map((feature, featureIndex) => (
                 <div key={featureIndex} className="flex items-center space-x-3">
-                  <Check className="w-3 h-3 text-green-800 " />
+                  <Check className="w-3 h-3 text-green-800" />
                   <span className="text-gray-700">{feature}</span>
                 </div>
               ))}

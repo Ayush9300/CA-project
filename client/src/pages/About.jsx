@@ -34,7 +34,7 @@ const About = () => {
   const connectors = [cross, equal];
 
   return (
-    <div className="relative pt-[80px] lg:pt-[100px]">
+    <div className="relative pt-[95px] lg:pt-[100px]">
       {/* About Section */}
       <div className="w-[95%] lg:w-[90%] mx-auto px-2 sm:px-4 lg:px-8">
         <div className="container mx-auto px-2 sm:px-6 grid md:grid-cols-2 gap-6 lg:gap-12 items-center">

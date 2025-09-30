@@ -15,6 +15,13 @@ import ServiceSection from "./ServiceSection";
 import Slider from "./Slider";
 import ProcessSteps from "./ProcessSection";
 import ReviewCard from "./ReviewCard";
+import service from "../../assets/icons/servicecompany.png";
+import service1 from "../../assets/icons/servicegst.png";
+import service2 from "../../assets/icons/servicetrademark.png";
+import service3 from "../../assets/icons/servicelegal.png";
+
+
+
 
 const Home = () => {
   return (
@@ -23,9 +30,8 @@ const Home = () => {
       <div className="relative bg-[#EBF4FF] pt-12 md:pt-16 pb-16 md:pb-24 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
-            
-            {/* Left Side: Text Content */}
-            <div className="text-center md:text-left">
+            {/* Text (desktop left, mobile below image) */}
+            <div className="text-center md:text-left order-last md:order-first">
               <p className="text-blue-600 font-semibold">
                 Get Company Registration & Compliance Solutions Under One Roof!
               </p>
@@ -53,7 +59,18 @@ const Home = () => {
                   href="#"
                   className="flex items-center space-x-3 text-base font-medium hover:text-blue-600"
                 >
-                  <FaBuilding className="text-blue-600 text-xl" />
+                  {/* <FaBuilding className="text-blue-600 text-xl" /> */}
+
+                  <img
+                    src={service}
+                    alt="Logo"
+                    className="w-6 h-6"
+                    style={{
+                      filter:
+                        "grayscale(100%) brightness(0.4) invert(0.3) sepia(1) saturate(5000%) hue-rotate(200deg) contrast(0.9)",
+                    }}
+                  />
+
                   <span>Company Registration</span>
                 </a>
 
@@ -61,23 +78,49 @@ const Home = () => {
                   href="#"
                   className="flex items-center space-x-3 text-base font-medium hover:text-blue-600"
                 >
-                  <FaFileInvoice className="text-blue-600 text-xl" />
+                 
+                   <img
+                    src={service1}
+                    alt="Logo"
+                    className="w-6 h-6"
+                    style={{
+                      filter:
+                        "grayscale(100%) brightness(0.4) invert(0.3) sepia(1) saturate(5000%) hue-rotate(200deg) contrast(0.9)",
+                    }}
+                  />
                   <span>GST & Tax Filings</span>
                 </a>
 
                 <a
                   href="#"
-                  className="flex items-center space-x-3 text-base font-medium hover:text-blue-600"
+                  className="flex items-center space-x-3  text-base  font-medium hover:text-blue-600"
                 >
-                  <FaTrademark className="text-blue-600 text-xl" />
-                  <span>Trademark Registration</span>
+                  <img
+                    src={service2}
+                    alt="Logo"
+                    className="w-5 h-3"
+                    style={{
+                      filter:
+                       "grayscale(100%) brightness(0.4) invert(0.3) sepia(1) saturate(5000%) hue-rotate(200deg) contrast(0.9)",
+                    }}
+                  />
+                  <span className="ml-1">Trademark Registration</span>
                 </a>
 
                 <a
                   href="#"
                   className="flex items-center space-x-3 text-base font-medium hover:text-blue-600"
                 >
-                  <FaBalanceScale className="text-blue-600 text-xl" />
+                <img
+  src={service3}
+  alt="Logo"
+  className="w-6 h-5"
+  style={{
+    filter:
+      "grayscale(100%) brightness(0.4) invert(0.3) sepia(1) saturate(5000%) hue-rotate(200deg) contrast(0.9)",
+  }}
+/>
+
                   <span>Legal & Compliance</span>
                 </a>
               </div>
@@ -87,8 +130,8 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Side: Illustration */}
-            <div className="flex justify-center md:justify-end mt-8 md:mt-0">
+            {/* Image (desktop right, mobile top) */}
+            <div className="flex justify-center md:justify-end order-first md:order-last mt-0 md:mt-0">
               <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg">
                 <div className="aspect-[5/4]">
                   <Lottie

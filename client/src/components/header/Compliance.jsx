@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
-import Dropdown from "../ui/Dropdown";
-import { path } from "framer-motion/client";
+import Dropdown, { MobileDropdown } from "../ui/Dropdown";
 
 const Compliance = () => {
   const [open, setOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef(null);
   const timeoutRef = useRef(null);
 
@@ -72,7 +72,7 @@ const Compliance = () => {
         {
           name: "Change Office Address",
           description:
-            "Update your company’s registered office address legally.",
+            "Update your company's registered office address legally.",
           path: "/CompanyChanges/ChangeOfficeAddress",
         },
         {
@@ -88,7 +88,7 @@ const Compliance = () => {
         {
           name: "MOA/AOA Amendment",
           description:
-            "Amend your company’s MOA or AOA documentation properly.",
+            "Amend your company's MOA or AOA documentation properly.",
           path: "/CompanyChanges/MOA_AOAAmendment",
         },
       ],
@@ -128,6 +128,18 @@ const Compliance = () => {
     },
   ];
 
+  // Clear timer when unmounting
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   // Clean up timer on unmount
   useEffect(() => {
     return () => {
@@ -136,23 +148,31 @@ const Compliance = () => {
   }, []);
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current); // Cancel timer if hovering back
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
     setOpen(true);
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setOpen(false), 200); // Close after 200ms
+    timeoutRef.current = setTimeout(() => setOpen(false), 200);
+  };
+
+   const handleItemClick = () => {
+    setOpen(false);
+    if (onItemClick) onItemClick();
   };
 
   return (
     <div
       ref={dropdownRef}
       className="relative inline-block"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={!isMobile ? handleMouseEnter : undefined}
+      onMouseLeave={!isMobile ? handleMouseLeave : undefined}
     >
       {/* Button */}
-      <button className="items-center px-1 py-2 hover:text-blue-600 font-medium transition-colors duration-200 relative flex">
+      <button
+        className="items-center px-1 py-2 hover:text-blue-600 font-medium transition-colors duration-200 relative flex"
+        onClick={() => setOpen((prev) => !prev)}
+      >
         <span>Compliance</span>
         <FiChevronDown
           className={`ml-1 mt-1 transition-transform duration-200 ${
@@ -161,9 +181,20 @@ const Compliance = () => {
         />
       </button>
 
-      {/* Dropdown */}
-      {open && (
-        <div className="absolute top-full ml-[300px] mt-1">
+      {/* Mobile Dropdown */}
+      {isMobile && (
+        <MobileDropdown
+          items={menuData}
+          isOpen={open}
+          onClose={() => setOpen(false)}
+            onItemClick={handleItemClick}
+          title = "Compliance"
+        />
+      )}
+
+      {/* Desktop Dropdown */}
+      {!isMobile && open && (
+        <div className="absolute top-full ml-[300px] mt-3">
           <Dropdown items={menuData} className="w-[1300px] h-[620px]" />
         </div>
       )}

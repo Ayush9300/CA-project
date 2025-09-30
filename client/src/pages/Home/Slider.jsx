@@ -7,6 +7,7 @@ import { FaGoogle, FaFacebook } from "react-icons/fa";
 import { SiGodaddy, SiTrustpilot, SiRazorpay } from "react-icons/si";
 import { RiMetaLine } from "react-icons/ri";
 import { FcGoogle } from "react-icons/fc";
+import razorpay from "../../assets/icons/razorpay.png";
 
 const Slider = () => {
   const backendTechnologies = [
@@ -14,12 +15,13 @@ const Slider = () => {
     { icon: <SiGodaddy className="text-5xl text-gray-700" />, name: "GoDaddy" },
     { icon: <RiMetaLine className="text-5xl text-blue-700" />, name: "Meta" },
     { icon: <SiTrustpilot className="text-5xl text-green-600" />, name: "Trustpilot" },
-    { icon: <SiRazorpay className="text-5xl text-blue-600" />, name: "Razorpay" },
+    { icon: <img src={razorpay} alt="razorpay" className="w-30 h-10" /> },
     { icon: <SiGodaddy className="text-5xl text-gray-700" />, name: "GoDaddy" },
     { icon: <FcGoogle className="text-5xl" />, name: "Google" },
     { icon: <RiMetaLine className="text-5xl text-blue-700" />, name: "Meta" },
     { icon: <SiTrustpilot className="text-5xl text-green-600" />, name: "Trustpilot" },
-    { icon: <SiRazorpay className="text-5xl text-blue-600" />, name: "Razorpay" },
+    // { icon: <SiRazorpay className="text-5xl text-blue-600" />, name: "Razorpay" },
+    { icon: <img src={razorpay} alt="razorpay" className="w-35 h-10" /> },
   ];
 
   return (

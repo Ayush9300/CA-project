@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FiChevronDown } from "react-icons/fi";
+import { MobileDropdown } from "../ui/Dropdown"; // <-- same import style as OtherReg
 
 const ExploreDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const dropdownRef = useRef(null);
-  const timeoutRef = useRef(null); // Timer reference
+  const timeoutRef = useRef(null);
 
   const items = [
     { label: "Contact Us", href: "/contact" },
@@ -12,26 +14,42 @@ const ExploreDropdown = () => {
     { label: "Blogs", href: "/blogs" },
   ];
 
-  // Close the dropdown if clicking outside
+  // Detect screen size for mobile
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Close on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleMouseEnter = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current); // Cancel closing timer
-    setIsOpen(true);
+    if (!isMobile) {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+      setIsOpen(true);
+    }
   };
 
   const handleMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => setIsOpen(false), 200); // Close after 200ms
+    if (!isMobile) {
+      timeoutRef.current = setTimeout(() => setIsOpen(false), 200);
+    }
   };
+   const handleItemClick = () => {
+    setOpen(false);
+    if (onItemClick) onItemClick();
+  };
+
 
   return (
     <div
@@ -41,16 +59,42 @@ const ExploreDropdown = () => {
       onMouseLeave={handleMouseLeave}
     >
       {/* Trigger Button */}
-      <button className="flex items-center space-x-1 text-gray-800 hover:text-blue-600 font-medium mt-2">
+      <button
+        className="flex items-center space-x-1 text-gray-800 hover:text-blue-600 font-medium mt-2"
+        onClick={() => isMobile && setIsOpen((prev) => !prev)}
+      >
         <span className="mb-1 text-gray-500 transition-colors font-medium">
           Explore Us
         </span>
-        <FiChevronDown />
+        <FiChevronDown
+          className={`transition-transform duration-200 ${
+            isOpen ? "rotate-180" : "rotate-0"
+          }`}
+        />
       </button>
 
-      {/* Dropdown Menu */}
-      {isOpen && (
-        <div className="absolute mt-5   items-center w-55 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
+      {/* Mobile View */}
+      {isMobile && (
+        <MobileDropdown
+          items={[
+            {
+              title: "Explore Us",
+              items: items.map((item) => ({
+                name: item.label,
+                path: item.href,
+              })),
+            },
+          ]}
+          isOpen={isOpen}
+          onClose={() => setIsOpen(false)}
+          onItemClick={handleItemClick}
+          title="Explore Us"
+        />
+      )}
+
+      {/* Desktop View */}
+      {!isMobile && isOpen && (
+        <div className="absolute mt-8 w-56 bg-white border border-gray-200 rounded-lg shadow-lg z-50">
           <ul className="flex flex-col">
             {items.map((item, index) => (
               <li key={index}>
