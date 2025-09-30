@@ -19,8 +19,7 @@ const PrivateLimited = () => {
   const [openIndex, setOpenIndex] = useState(null);
 
   const pricingHeadings = {
-    tagline:
-      "Transparent Pricing, No Hidden Charges",
+    tagline: "Transparent Pricing, No Hidden Charges",
     title: "Choose the Right Plan",
     subtitle: "For your Partnership Firm Registration",
     description:
@@ -40,6 +39,11 @@ const PrivateLimited = () => {
     description:
       "Launch your One Person Company (OPC) effortlessly with our experienced consultants. Ensure limited liability & separate legal identity while focusing on building your dream venture. Begin your entrepreneurial journey today with us!",
   };
+  const titleArray = [
+    "Start Your",
+    "Business",
+    "& Unlock Growth Opportunities!",
+  ];
 
   const plans = [
     {
@@ -331,8 +335,8 @@ const PrivateLimited = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start min-h-screen">
-      <HeroSection heroContent={heroContent} />
+    <div className=" mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start min-h-screen">
+      <HeroSection heroContent={heroContent} title={titleArray} />
       <FormSection />
       <PricingSection plans={plans} headings={pricingHeadings} />
       <AboutSection aboutContent={aboutContent} />
