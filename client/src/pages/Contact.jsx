@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Checkbox from "../components/ui/Checkbox";
+import { FaArrowRightLong } from "react-icons/fa6";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -35,60 +37,77 @@ export default function ContactPage() {
     }
 
     if (!formData.message.trim()) tempErrors.message = "Message is required";
-    if (!formData.agreement) tempErrors.agreement = "You must agree to the terms";
+    if (!formData.agreement)
+      tempErrors.agreement = "You must agree to the terms";
 
     setErrors(tempErrors);
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
-      alert("Form submitted successfully!");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
-        agreement: false,
-      });
-      setErrors({});
+      try {
+        const res = await fetch("http://localhost:5000/api/contact/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+
+        const data = await res.json();
+        if (data.success) {
+          toast.success("Message sent successfully! 🎉"); 
+          setFormData({
+            firstName: "",
+            lastName: "",
+            email: "",
+            phone: "",
+            message: "",
+            agreement: false,
+          });
+          setErrors({});
+        } else {
+          toast.error(data.message || "Something went wrong!"); // Error toast
+        }
+      } catch (error) {
+        toast.error("Server error!"); // Error toast for network/server
+      }
     }
   };
 
   return (
     <div className="min-h-screen bg-gray-50 font-inter">
       {/* Hero Section */}
-     <section className="py-20 bg-blue-50 relative overflow-hidden">
-  <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
-    <motion.div
-      className="space-y-8"
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-      {/* Heading */}
-      <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center sm:text-left">
-        Get in <span className="text-blue-800">Touch</span>
-      </h1>
+      <section className="py-20 bg-blue-50 relative overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-5">
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Heading */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 text-center sm:text-left">
+              Get in <span className="text-blue-800">Touch</span>
+            </h1>
 
-      {/* Paragraphs */}
-      <p className="text-base sm:text-lg font-medium max-w-3xl text-gray-800 leading-relaxed px-2 sm:px-0 text-left">
-        At TaxBizLegal, we believe in clear communication—no hidden fees, no
-        confusion. From explaining government rules to guiding you on pricing
-        and timelines, we keep everything simple and transparent. So you can
-        focus on your business, while we handle the legal details.
-      </p>
+            {/* Paragraphs */}
+            <p className="text-base sm:text-lg font-medium max-w-3xl text-gray-800 leading-relaxed px-2 sm:px-0 text-left">
+              At TaxBizLegal, we believe in clear communication—no hidden fees,
+              no confusion. From explaining government rules to guiding you on
+              pricing and timelines, we keep everything simple and transparent.
+              So you can focus on your business, while we handle the legal
+              details.
+            </p>
 
-      <p className="text-base sm:text-lg font-medium max-w-3xl text-gray-800 leading-relaxed px-2 sm:px-0 text-left">
-        Have questions or need guidance? We’re here to help — you’re just a
-        call away. Reach out to us and let’s talk about how we can support your
-        goals.
-      </p>
-    </motion.div>
-  </div>
-</section>
+            <p className="text-base sm:text-lg font-medium max-w-3xl text-gray-800 leading-relaxed px-2 sm:px-0 text-left">
+              Have questions or need guidance? We’re here to help — you’re just
+              a call away. Reach out to us and let’s talk about how we can
+              support your goals.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Contact Info & Form */}
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
@@ -166,9 +185,9 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white shadow-md rounded-lg p-8">
+          <div className=" p-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Send us a message
+              Register Today, Secure Your Future
             </h2>
             <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -187,12 +206,14 @@ export default function ContactPage() {
                     autoComplete="given-name"
                     value={formData.firstName}
                     onChange={(e) => handleChange("firstName", e.target.value)}
-                    className={`mt-1 block w-full border ${
+                    className={`mt-1 block w-full border-b ${
                       errors.firstName ? "border-red-500" : "border-gray-300"
-                    } rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-[#03286d]`}
+                    } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
                   />
                   {errors.firstName && (
-                    <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.firstName}
+                    </p>
                   )}
                 </div>
                 <div>
@@ -210,12 +231,14 @@ export default function ContactPage() {
                     autoComplete="family-name"
                     value={formData.lastName}
                     onChange={(e) => handleChange("lastName", e.target.value)}
-                    className={`mt-1 block w-full border ${
+                    className={`mt-1 block w-full border-b ${
                       errors.lastName ? "border-red-500" : "border-gray-300"
-                    } rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-[#03286d]`}
+                    } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
                   />
                   {errors.lastName && (
-                    <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.lastName}
+                    </p>
                   )}
                 </div>
               </div>
@@ -235,9 +258,9 @@ export default function ContactPage() {
                   autoComplete="email"
                   value={formData.email}
                   onChange={(e) => handleChange("email", e.target.value)}
-                  className={`mt-1 block w-full border ${
+                  className={`mt-1 block w-full border-b ${
                     errors.email ? "border-red-500" : "border-gray-300"
-                  } rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-[#03286d]`}
+                  } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -264,9 +287,9 @@ export default function ContactPage() {
                       handleChange("phone", value);
                     }
                   }}
-                  className={`mt-1 block w-full border ${
+                  className={`mt-1 block w-full border-b ${
                     errors.phone ? "border-red-500" : "border-gray-300"
-                  } rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-[#03286d]`}
+                  } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -287,9 +310,9 @@ export default function ContactPage() {
                   placeholder="Enter your message"
                   value={formData.message}
                   onChange={(e) => handleChange("message", e.target.value)}
-                  className={`mt-1 block w-full border ${
+                  className={`mt-1 block w-full border-b ${
                     errors.message ? "border-red-500" : "border-gray-300"
-                  } rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-[#03286d]`}
+                  } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
                 />
                 {errors.message && (
                   <p className="text-red-500 text-sm mt-1">{errors.message}</p>
@@ -306,21 +329,32 @@ export default function ContactPage() {
                   />
                 </div>
                 <div className="ml-3 text-sm">
-                  <label htmlFor="agreement" className="font-normal text-gray-600">
+                  <label
+                    htmlFor="agreement"
+                    className="font-normal text-gray-600"
+                  >
                     By submitting the form, you agree to allow Tax Biz Legal
-                    representative to contact you for service related assistance and
-                    acknowledge that you accept our{" "}
-                    <a href="/terms-conditions" className="text-blue-600 underline">
+                    representative to contact you for service related assistance
+                    and acknowledge that you accept our{" "}
+                    <a
+                      href="/terms-conditions"
+                      className="text-blue-600 underline"
+                    >
                       Terms & Conditions
                     </a>{" "}
                     and the{" "}
-                    <a href="/privacy-policy" className="text-blue-600 underline">
+                    <a
+                      href="/privacy-policy"
+                      className="text-blue-600 underline"
+                    >
                       Privacy Policy
                     </a>
                     .
                   </label>
                   {errors.agreement && (
-                    <p className="text-red-500 text-sm mt-1">{errors.agreement}</p>
+                    <p className="text-red-500 text-sm mt-1">
+                      {errors.agreement}
+                    </p>
                   )}
                 </div>
               </div>
@@ -328,9 +362,9 @@ export default function ContactPage() {
               <div>
                 <button
                   type="submit"
-                  className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#03286d] hover:bg-[#03287d] cursor-pointer"
+                  className="flex items-center justify-start gap-2 py-2 px-6 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-[#03287d] cursor-pointer "
                 >
-                  Send Message
+                  Send Message <FaArrowRightLong />
                 </button>
               </div>
             </form>
