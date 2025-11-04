@@ -1,64 +1,54 @@
-import Contact from "../models/contact.js";
 import nodemailer from "nodemailer";
 
 export const submitContactForm = async (req, res) => {
+  const { firstName, lastName, email, phone, message } = req.body;
+
+  if (!firstName || !lastName || !email || !phone || !message) {
+    return res
+      .status(400)
+      .json({ success: false, message: "All fields are required." });
+  }
+
   try {
-    const { firstName, lastName, email, phone, message } = req.body;
-
-    // 1. Save in DB
-    const newContact = new Contact({
-      firstName,
-      lastName,
-      email,
-      phone,
-      message,
-    });
-    await newContact.save();
-
-    // 2. Setup Nodemailer Transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false, // ⚠️ disables cert check
+        user: process.env.ADMIN_EMAIL,
+        pass: process.env.ADMIN_PASS,
       },
     });
 
-    // 3. Send mail to Admin
+    // Send email to Admin
     await transporter.sendMail({
-      from: `"TaxBizLegal Contact" <${process.env.EMAIL_USER}>`,
+      from: email,
       to: process.env.ADMIN_EMAIL,
-      subject: "New Contact Form Submission",
+      subject: `New Contact Form Submission from ${firstName} ${lastName}`,
       html: `
-        <h2>New Contact Request</h2>
-        <p><b>Name:</b> ${firstName} ${lastName}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Phone:</b> ${phone}</p>
-        <p><b>Message:</b> ${message}</p>
+        <h2>New User Message</h2>
+        <p><strong>Name:</strong> ${firstName} ${lastName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong> ${message}</p>
       `,
     });
 
-    // 4. Send Thank You mail to User
+    // Send Thank You email to user
     await transporter.sendMail({
-      from: `"TaxBizLegal" <${process.env.EMAIL_USER}>`,
+      from: process.env.ADMIN_EMAIL,
       to: email,
-      subject: "Thank you for contacting us!",
+      subject: "Thank You - Ezip Panjiyan Center",
       html: `
-        <h2>Hello ${firstName},</h2>
-        <p>Thank you for reaching out to us. Our team will contact you shortly.</p>
+        <h3>Dear ${firstName},</h3>
+        <p>Thank you for contacting <strong>Ezip Panjiyan Center</strong>.</p>
+        <p>We’ve received your message and our team will get back to you soon.</p>
         <br/>
-        <p>Regards,<br/>TaxBizLegal Team</p>
+        <p>Best regards,<br/>Ezip Panjiyan Center</p>
       `,
     });
 
-    res
-      .status(200)
-      .json({ success: true, message: "Form submitted successfully" });
+    res.status(200).json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
-    console.error("Error:", error);
-    res.status(500).json({ success: false, message: "Server Error" });
+    console.error("Error sending mail:", error);
+    res.status(500).json({ success: false, message: "Failed to send message." });
   }
 };

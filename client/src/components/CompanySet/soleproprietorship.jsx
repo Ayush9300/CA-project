@@ -86,8 +86,8 @@ const PrivateLimited = () => {
     title: "All you need to know about Sole Proprietorship",
     paragraphs: [
       "A Sole Proprietorship is one of the simplest and most common forms of business structures in India. It is owned, managed, and controlled by a single individual. Unlike a Private Limited Company or LLP, it is not a separate legal entity but a business run by an individual. The owner has complete control over the business, makes all decisions, and retains all profits. This structure is ideal for small-scale businesses, freelancers, and individual entrepreneurs. It is easy to set up and offers operational flexibility but comes with the drawback of unlimited liability for the owner.",
-      "Taxbizlegal.com is a trusted platform that provides end-to-end services for Sole Proprietorship Company registration, including incorporation, compliance, advisory, and consultancy. The registration process is quick, affordable, and simple, ensuring a smooth start for your business.",
-      "In addition to Sole Proprietorship registration, we also offer services for Partnership Registration, LLP Incorporation, One Person Company registration, and more. Contact us for a free consultation at info@taxbizlegal.com or call our compliance manager at 9403892279.",
+      "EbizPanjiyancom is a trusted platform that provides end-to-end services for Sole Proprietorship Company registration, including incorporation, compliance, advisory, and consultancy. The registration process is quick, affordable, and simple, ensuring a smooth start for your business.",
+      "In addition to Sole Proprietorship registration, we also offer services for Partnership Registration, LLP Incorporation, One Person Company registration, and more. Contact us for a free consultation at info@EbizPanjiyancom or call our compliance manager at 8602222494.",
     ],
   };
 

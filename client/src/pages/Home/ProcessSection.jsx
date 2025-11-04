@@ -59,7 +59,7 @@ const ProcessSteps = () => {
         </div>
 
         {/* Steps Section */}
-        <div className="relative">
+        <div className="relative ">
           {/* Vertical Line - only for desktop */}
           {!isMobile && (
             <div className="hidden lg:block absolute left-5 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-900 via-blue-700 to-blue-600"></div>

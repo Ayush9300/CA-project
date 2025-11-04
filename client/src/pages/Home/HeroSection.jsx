@@ -1,80 +1,80 @@
-import React from "react";
-import Button from "../../components/ui/Button";
-import { FaCheckCircle } from "react-icons/fa";
-import { MdOutlineMoneyOff } from "react-icons/md";
-import { RiTeamLine } from "react-icons/ri";
+import React from 'react';
 import supportImg from "../../assets/hero.webp";
+const Scale = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 16v3a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h4"/><path d="M12 21V10a2 2 0 0 0-2-2H4"/><path d="M17 14h6"/><path d="M20 7v7"/></svg>
+);
+const Users = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+);
+const Headset = (props) => (
+  <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg>
+);
+
+const featuresData = [
+  {
+    icon: Scale,
+    title: 'Affordable Professional Services',
+    description: 'Get expert legal and financial assistance at competitive prices, tailored to your needs.',
+  },
+  {
+    icon: Users,
+    title: 'Diverse Expert Network',
+    description: 'Consult top-tier lawyers, CA, and secretaries for seamless compliance and advisory.',
+  },
+  {
+    icon: Headset,
+    title: 'Quick Customer Support',
+    description: 'We value your time—get responses to your queries within 24 hours* with dedicated support.',
+  },
+];
 
 const HeroSection = () => {
   return (
-    <section className="bg-blue-50 py-12 md:py-16 px-4 sm:px-6 lg:px-12 rounded-2xl">
-      <div className="container mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10">
-
-        {/* Left Content */}
-        <div className="flex-1 text-center lg:text-left">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-6">
-            Why Do Customers Love Us?
-          </h2>
-          <p className="text-gray-600 mb-8 max-w-md sm:max-w-lg md:max-w-xl mx-auto lg:mx-0 text-sm sm:text-base">
-            We provide hassle-free legal and financial solutions with expert
-            assistance, ensuring transparency and efficiency at every step.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
-            {/* Card 1 */}
-            <div className="text-center sm:text-left">
-              <MdOutlineMoneyOff className="text-blue-600 text-3xl mb-3 mx-auto sm:mx-0" />
-              <h3 className="font-semibold text-base text-gray-900 mb-1">
-                Affordable Professional Services
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-sm">
-                Get expert legal and financial assistance at competitive prices,
-                tailored to your needs.
-              </p>
+    <section className=" container bg-blue-50/70 py-12 md:py-14 px-14  rounded-3xl">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-start">
+          <div className="md:w-1/2 lg:w-2/2">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 leading-tight">
+              Why Do Customers Love Us?
+            </h2>
+            <p className="text-lg text-black-600 mb-4 ">
+              We provide hassle-free legal and financial solutions with expert assistance, ensuring transparency and efficiency at every step.
+            </p>
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6 lg:gap-8 mb-6">
+              {featuresData.map((feature, index) => (
+                <div key={index} className="flex flex-col">
+                  {/* Icon Container with styling similar to the image */}
+                  <div className="p-3 w-12 h-12 rounded-full border border-blue-600/30 text-blue-600 flex items-center justify-center mb-4">
+                    <feature.icon className="w-5 h-5" />
+                  </div>
+                  
+                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
             </div>
-
-            {/* Card 2 */}
-            <div className="text-center sm:text-left">
-              <RiTeamLine className="text-blue-600 text-3xl mb-3 mx-auto sm:mx-0" />
-              <h3 className="font-semibold text-base text-gray-900 mb-1">
-                Diverse Expert Network
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-sm">
-                Consult top-tier lawyers, CA, and secretaries for seamless
-                compliance and advisory.
-              </p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="text-center sm:text-left">
-              <FaCheckCircle className="text-blue-600 text-3xl mb-3 mx-auto sm:mx-0" />
-              <h3 className="font-semibold text-base text-gray-900 mb-1">
-                Quick Customer Support
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-sm">
-                We value your time—get responses within 24 hours* with dedicated
-                support.
-              </p>
+            <a 
+              href="#" 
+              className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-blue-800 hover:bg-blue-900 transition duration-150 ease-in-out"
+            >
+              Talk to Expert Now &rarr;
+            </a>
+          </div>
+          {/* Illustration Container (takes 50% space on desktop) */}
+          <div className="md:w-1/2 lg:w-1/2 w-full flex justify-center">
+            <div className="w-full max-w-md md:max-w-none">
+              <div className="w-full aspect-[4/3]  flex items-center justify-center">
+                 <img src={supportImg}/>
+              </div>
             </div>
           </div>
-
-          {/* Button */}
-          <div className="flex justify-center lg:justify-start">
-            <Button>Talk to Expert Now →</Button>
-          </div>
-        </div>
-
-        {/* Right Image */}
-        <div className="flex-1 flex justify-center lg:justify-end">
-          <img
-            src={supportImg}
-            alt="Customer Support"
-            className="w-64 sm:w-72 md:w-80 lg:w-64 xl:w-80 h-auto"
-          />
         </div>
       </div>
     </section>
   );
 };
-
-export default HeroSection;
+export default HeroSection ;

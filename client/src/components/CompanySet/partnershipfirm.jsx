@@ -129,7 +129,7 @@ const PrivateLimited = () => {
     paragraphs: [
       "A One Person Company (OPC) in India is a unique business structure that allows a single individual to form and operate a company with limited liability. Introduced under the Companies Act, 2013, it offers the benefits of a Private Limited Company while maintaining the simplicity of a sole proprietorship. OPCs are ideal for solo entrepreneurs and small business owners who want full control over their enterprise without taking on unlimited personal risk.",
       "To register an OPC, only one director and one member are required, and the same individual can act in both capacities. The liability of the owner is limited to the amount of their share capital, ensuring personal assets are protected in case of business loss. Once incorporated and the Certificate of Incorporation is issued, the OPC can start its business activities. The registration process is typically completed within 10 to 15 working days.",
-      "Taxbizlegal.com provides comprehensive services for One Person Company registration, covering every step from documentation and filing to compliance and post-incorporation support. Our team ensures a smooth and hassle-free experience at an affordable cost. We also offer assistance with Private Limited Company registration, LLP incorporation, GST filings, and more. For a free consultation, write to us at info@taxbizlegal.com or connect with our compliance manager at 9403892279.",
+      "EbizPanjiyancom provides comprehensive services for One Person Company registration, covering every step from documentation and filing to compliance and post-incorporation support. Our team ensures a smooth and hassle-free experience at an affordable cost. We also offer assistance with Private Limited Company registration, LLP incorporation, GST filings, and more. For a free consultation, write to us at info@EbizPanjiyancom or connect with our compliance manager at 8602222494.",
     ],
   };
 
@@ -335,7 +335,7 @@ const PrivateLimited = () => {
   };
 
   return (
-    <div className=" mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start min-h-screen">
+    <div className=" max-w-7xl mx-auto p-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-start min-h-screen">
       <HeroSection heroContent={heroContent} title={titleArray} />
       <FormSection />
       <PricingSection plans={plans} headings={pricingHeadings} />

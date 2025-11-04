@@ -117,7 +117,7 @@ const PrivateLimited = () => {
   paragraphs: [
     "A Limited Liability Partnership (LLP) is a hybrid business structure introduced in India through the LLP Act, 2008. It combines the operational flexibility of a partnership with the benefits of limited liability offered by a company. An LLP exists as a separate legal entity, distinct from its partners, and is ideally suited for small and medium-sized businesses, professionals, and startups looking for a low-compliance, scalable, and liability-protected structure.",
     "LLPs offer limited liability protection, flexible internal management through an LLP Agreement, and no restriction on the number of partners (minimum 2 required). Moreover, LLPs are not required to maintain complex compliance like companies and can be formed with relatively low cost and ease.",
-    "Taxbizlegal.com is a trusted platform that provides end-to-end services for Limited Liability Partnership Company registration, including incorporation, compliance, advisory, and consultancy. The process is quick, affordable, and simple. Additionally, we offer services for Pvt Ltd Company Registration, One Person Company registration, and more. Contact us for a free consultation at info@taxbizlegal.com or call our compliance manager at 9403892279.",
+    "EbizPanjiyancom is a trusted platform that provides end-to-end services for Limited Liability Partnership Company registration, including incorporation, compliance, advisory, and consultancy. The process is quick, affordable, and simple. Additionally, we offer services for Pvt Ltd Company Registration, One Person Company registration, and more. Contact us for a free consultation at info@EbizPanjiyancom or call our compliance manager at 8602222494.",
   ],
 };
 

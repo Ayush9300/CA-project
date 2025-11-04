@@ -2,12 +2,34 @@ import React, { useState } from "react";
 import { ChevronDown, ChevronUp, Check, ArrowRight } from "lucide-react";
 import pvt from "../../ui/pvt.png";
 import img from "../../../assets/icons/download.png";
-import Checkbox from "../../ui/Checkbox";
-import { FaArrowRightLong } from "react-icons/fa6";
+import { motion } from "framer-motion";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import main1 from "../../../assets/main.jpg";
+import main2 from "../../../assets/main1.jpg";
+import main3 from "../../../assets/main2.jpg";
+// Common animation variants
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8 } },
+};
+
+const fadeIn = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.8 } },
+};
 
 export const HeroSection = ({ heroContent, title = [] }) => {
   return (
-    <div className=" min-w-8xl  space-y-8  mt-[150px]">
+    <motion.div
+      className="min-w-8xl space-y-8 mt-[100px]"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       {/* Tagline */}
       <p className="text-[#0058BA] font-bold">{heroContent?.tagline}</p>
 
@@ -34,295 +56,174 @@ export const HeroSection = ({ heroContent, title = [] }) => {
 
       {/* Description */}
       <p className="text-gray-600">{heroContent?.description}</p>
-    </div>
+    </motion.div>
   );
 };
-
 export const FormSection = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      alert("Form submitted successfully!");
-      setFormData({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
-        message: "",
-        agreement: false,
-      });
-      setErrors({});
-    }
-  };
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-    message: "",
-    agreement: false,
-  });
-
-  const [errors, setErrors] = useState({});
   return (
-    <div id="complianceForm" className=" mt-30 p-8 ">
-      <h2 className="text-2xl font-medium text-gray-900 mb-10">
-        Register Today, Secure Your Future
-      </h2>
-      <form className="space-y-6 w-[460px]" onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          <div>
-            <label
-              htmlFor="first-name"
-              className="block text-sm font-medium text-gray-700"
-            >
-              First name
-            </label>
-            <input
-              type="text"
-              name="firstName"
-              id="first-name"
-              placeholder="Enter your first name"
-              autoComplete="given-name"
-              value={formData.firstName}
-              onChange={(e) => handleChange("firstName", e.target.value)}
-              className={`mt-1 block w-full border-b ${
-                errors.firstName ? "border-red-500" : "border-gray-300"
-              } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
-            />
-            {errors.firstName && (
-              <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
-            )}
-          </div>
-          <div>
-            <label
-              htmlFor="last-name"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Last name
-            </label>
-            <input
-              type="text"
-              name="lastName"
-              id="last-name"
-              placeholder="Enter your last name"
-              autoComplete="family-name"
-              value={formData.lastName}
-              onChange={(e) => handleChange("lastName", e.target.value)}
-              className={`mt-1 block w-full border-b ${
-                errors.lastName ? "border-red-500" : "border-gray-300"
-              } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
-            />
-            {errors.lastName && (
-              <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <label
-            htmlFor="email"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="Enter your email"
-            autoComplete="email"
-            value={formData.email}
-            onChange={(e) => handleChange("email", e.target.value)}
-            className={`mt-1 block w-full border-b ${
-              errors.email ? "border-red-500" : "border-gray-300"
-            } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
-          />
-          {errors.email && (
-            <p className="text-red-500 text-sm mt-1">{errors.email}</p>
-          )}
-        </div>
-
-        <div>
-          <label
-            htmlFor="phone"
-            className="block text-sm font-medium text-gray-700"
-          >
-            Phone
-          </label>
-          <input
-            type="tel"
-            name="phone"
-            id="phone"
-            placeholder="Enter your phone number"
-            autoComplete="tel"
-            value={formData.phone}
-            onChange={(e) => {
-              const value = e.target.value;
-              if (/^\d{0,10}$/.test(value)) {
-                handleChange("phone", value);
-              }
+    <motion.div
+      id="complianceForm"
+      className="mt-30 p-8 hidden md:block"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      <div className="flex justify-center">
+        <div className="W-[550px] border-2 border-gray-200 rounded-xl shadow-lg overflow-hidden">
+          <Swiper
+            spaceBetween={30}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
             }}
-            className={`mt-1 block w-full border-b ${
-              errors.phone ? "border-red-500" : "border-gray-300"
-            } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
-          />
-          {errors.phone && (
-            <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-          )}
-        </div>
-
-        {/* <div>
-          <label
-            htmlFor="message"
-            className="block text-sm font-medium text-gray-700"
+            pagination={{
+              clickable: true, // dots for navigation
+            }}
+            modules={[Autoplay, Pagination]}
+            className="mySwiper"
           >
-            Message
-          </label>
-          <textarea
-            id="message"
-            name="message"
-            rows={4}
-            placeholder="Enter your message"
-            value={formData.message}
-            onChange={(e) => handleChange("message", e.target.value)}
-            className={`mt-1 block w-full border-b ${
-              errors.message ? "border-red-500" : "border-gray-300"
-            } rounded-none py-2 px-0 focus:outline-none focus:ring-0 focus:border-[#03286d]`}
-          />
-          {errors.message && (
-            <p className="text-red-500 text-sm mt-1">{errors.message}</p>
-          )}
-        </div> */}
-
-        {/* ✅ Checkbox Section */}
-        <div className="flex items-start">
-          <div className="flex h-5 items-center">
-            <Checkbox
-              id="agreement"
-              checked={formData.agreement}
-              onChange={(checked) => handleChange("agreement", checked)}
-            />
-          </div>
-          <div className="ml-3 text-sm">
-            <label htmlFor="agreement" className="font-normal text-gray-600">
-              I agree to the terms of use of the taxbizlegal.com and the{" "}
-              <a href="/terms-conditions" className="text-blue-600 underline">
-                Terms & Conditions
-              </a>{" "}
-              and the{" "}
-              <a href="/privacy-policy" className="text-blue-600 underline">
-                Privacy Policy
-              </a>
-              .
-            </label>
-            {errors.agreement && (
-              <p className="text-red-500 text-sm mt-1">{errors.agreement}</p>
-            )}
-          </div>
+            <SwiperSlide>
+              <img
+                src={main1}
+                alt="Promotion 1"
+                className="w-full h-[350px] object-cover"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src={main2}
+                alt="Promotion 2"
+                className="w-full h-[350px] object-cover"
+              />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img
+                src={main3}
+                alt="Promotion 3"
+                className="w-full h-[350px] object-cover"
+              />
+            </SwiperSlide>
+          </Swiper>
         </div>
-
-        <div>
-          <button
-            type="submit"
-            className="flex items-center justify-start gap-2 py-2 px-5 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-black hover:bg-[#03287d] cursor-pointer "
-          >
-            Enquiry Now <FaArrowRightLong />
-          </button>
-        </div>
-      </form>
-    </div>
+      </div>
+    </motion.div>
   );
 };
+
 export const PricingSection = ({ plans, headings }) => {
   return (
-    <div className="min-w-7xl mx-auto md:col-span-2 mt-10 px-4 text-center">
+     <motion.div
+      className="max-w-7xl mx-auto md:col-span-2 mt-10 px-4 text-center"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
+      {/* Headings Section */}
       {headings?.tagline && (
-        <p className="text-[#0058BA] font-medium uppercase text-sm mb-5">
+        <p className="text-[#0058BA] font-medium uppercase text-sm mb-3 sm:mb-5">
           {headings.tagline}
         </p>
       )}
 
       {headings?.title && (
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">
+        <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 sm:mb-6">
           {headings.title}
         </h2>
       )}
 
       {headings?.subtitle && (
-        <h2 className="text-4xl font-bold text-[#0058BA]">
+        <h2 className="text-2xl sm:text-4xl font-bold text-[#0058BA] mb-6">
           {headings.subtitle}
         </h2>
       )}
 
       {headings?.description && (
-        <p className="text-gray-600 mt-7 mb-10 max-w-2xl mx-auto">
+        <p className="text-gray-600 text-sm sm:text-base mt-4 mb-10 max-w-2xl mx-auto leading-relaxed">
           {headings.description}
         </p>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+      {/* Pricing Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
         {plans.map((plan) => (
           <div
             key={plan.name}
-            className={`relative rounded-2xl p-9 shadow-xl transition-all duration-300 hover:scale-105 bg-white flex flex-col ${
-              plan.popular ? "border-2 border-blue-600" : ""
+            className={`relative rounded-2xl p-6 sm:p-8 lg:p-9 shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.03] bg-white flex flex-col ${
+              plan.popular ? "border-2 border-blue-600" : "border border-gray-200"
             }`}
           >
+            {/* Popular Tag */}
             {plan.popular && (
-              <div className="absolute -top-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-semibold transform rotate-12 shadow-lg">
+              <div className="absolute -top-3 right-3 bg-blue-600 text-white px-3 py-1 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-semibold transform rotate-6 shadow-md">
                 POPULAR
               </div>
             )}
 
+            {/* Icon */}
             <div
-              className={`w-16 h-16 mx-auto mb-6 rounded-2xl ${plan.color} flex items-center justify-center text-2xl`}
+              className={`w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-5 sm:mb-6 rounded-2xl ${plan.color} flex items-center justify-center text-2xl`}
             >
               {plan.icon}
             </div>
 
+            {/* Plan Title */}
             <h3
-              className={`text-lg font-bold text-center mb-6 ${plan.textColor}`}
+              className={`text-lg sm:text-xl font-bold text-center mb-5 ${plan.textColor}`}
             >
               {plan.name}
             </h3>
 
-            <div className="text-center mb-8">
-              <div className="text-4xl font-bold text-gray-900 mb-2">
+            {/* Price */}
+            <div className="text-center mb-6">
+              <div className="text-3xl sm:text-4xl font-bold text-gray-900 mb-1">
                 {plan.price}
               </div>
-              <div className="text-gray-500 text-sm">{plan.gst}</div>
+              <div className="text-gray-500 text-xs sm:text-sm">{plan.gst}</div>
             </div>
 
-            {/* Features container */}
-            <div className="flex-1 flex flex-col space-y-2">
+            {/* Features */}
+            <div className="flex-1 flex flex-col space-y-2 sm:space-y-3 text-left">
               {plan.features.map((feature, featureIndex) => (
-                <div key={featureIndex} className="flex items-center space-x-3">
-                  <Check className="w-3 h-3 text-green-800" />
-                  <span className="text-gray-700">{feature}</span>
+                <div
+                  key={featureIndex}
+                  className="flex items-center space-x-2 sm:space-x-3"
+                >
+                  <Check className="w-3 h-3 sm:w-4 sm:h-4 text-green-800" />
+                  <span className="text-gray-700 text-sm sm:text-base">
+                    {feature}
+                  </span>
                 </div>
               ))}
             </div>
 
-            {/* Button at the bottom */}
+            {/* Button */}
             <button
-              className={`w-full py-2 rounded-lg font-semibold text-sm mt-5 transition-all duration-300 flex items-center justify-center space-x-2 ${plan.buttonStyle}`}
+              className={`w-full py-2 sm:py-3 mt-6 rounded-lg font-semibold text-xs sm:text-sm transition-all duration-300 flex items-center justify-center gap-2 ${plan.buttonStyle}`}
             >
               <span>
                 Get {plan.name.charAt(0) + plan.name.slice(1).toLowerCase()}
               </span>
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export const AboutSection = ({ aboutContent }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4 min-w-7xl mx-auto">
+    <motion.div
+      className="hidden md:block md:col-span-2 mt-20 px-4 min-w-7xl mx-auto"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-gray-900 leading-tight">
@@ -342,12 +243,18 @@ export const AboutSection = ({ aboutContent }) => {
           />
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export const BusinessStructureSection = ({ businessStructures }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+      <motion.div
+      className="md:col-span-2 mt-20 px-4"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold text-gray-900 leading-tight">
@@ -375,12 +282,18 @@ export const BusinessStructureSection = ({ businessStructures }) => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export const DocumentsSection = ({ documents, title }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+       <motion.div
+      className="md:col-span-2 mt-20 px-4"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="bg-gradient-to-r from-blue-100 to-blue-50 rounded-3xl p-8 md:p-12">
           <div className="text-start mb-12">
@@ -417,27 +330,23 @@ export const DocumentsSection = ({ documents, title }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export const ComplianceSection = ({ complianceData }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+        <motion.div
+      className="md:col-span-2 mt-20 px-4"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <h2 className="text-4xl font-bold text-gray-900 leading-tight mb-16">
             {complianceData.title}
           </h2>
-
-          {/* <div className="mb-12">
-            <h3 className="text-xl font-bold text-gray-900 mb-4">
-              {complianceData.whyMatters.title}
-            </h3>
-            <p className="text-gray-700 leading-relaxed max-w-4xl">
-              {complianceData.whyMatters.description}
-            </p>
-          </div> */}
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-28">
             {/* Left Side */}
             <div className="space-y-8">
@@ -450,7 +359,6 @@ export const ComplianceSection = ({ complianceData }) => {
                   {complianceData.whyMatters.description}
                 </p>
               </div>
-
               {/* Left Items */}
               {complianceData.items.left.map((item, index) => (
                 <div key={index} className="border-b border-gray-200 pb-6">
@@ -543,12 +451,18 @@ export const ComplianceSection = ({ complianceData }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export const StepsSection = ({ stepsData }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4">
+        <motion.div
+      className="md:col-span-2 mt-20 px-4"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       <div className="max-w-full  mx-auto">
         <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 md:p-12 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full opacity-20 transform translate-x-32 -translate-y-32"></div>
@@ -582,12 +496,18 @@ export const StepsSection = ({ stepsData }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 export const FAQSection = ({ faqData, openIndex, toggleFAQ }) => {
   return (
-    <div className="md:col-span-2 mt-20 px-4 mb-10">
+        <motion.div
+      className="md:col-span-2 mt-20 px-4 mb-10"
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+    >
       <div className="max-w-3xl mx-auto">
         <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
           Frequently Asked Questions
@@ -613,6 +533,8 @@ export const FAQSection = ({ faqData, openIndex, toggleFAQ }) => {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
+
+

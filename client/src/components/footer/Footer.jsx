@@ -70,8 +70,8 @@ export default function Footer() {
         <div>
           <h3 className="text-lg font-semibold text-white mb-2 text-left">Info</h3>
           <p className="text-sm text-left">Sai Vigneshwara Legal And Business Solutions Pvt Ltd</p>
-          <p className="text-sm text-left mt-1">+91 9403892279</p>
-          <p className="text-sm text-left mt-1">info@taxbizlegal.com</p>
+          <p className="text-sm text-left mt-1">+91 8602222494</p>
+          <p className="text-sm text-left mt-1">info@EbizPanjiyancom</p>
           <p className="text-sm text-left mt-1">CIN : U69202WB2025PTC277397</p>
 
           {/* Payment & WhatsApp icons */}

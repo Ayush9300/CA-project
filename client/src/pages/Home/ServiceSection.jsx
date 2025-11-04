@@ -17,28 +17,6 @@ const ServiceSection = () => {
       active: true,
     },
     {
-      // icon: (
-        // <img
-        //   src={service}
-        //   alt="Logo"
-        //   className="w-6 h-6 transition-all duration-300 hover:text-white"
-        
-    
-      // icon: (
-        // <img
-        //   onMouseEnter={(e) =>
-        //     (e.currentTarget.style.filter = "brightness(1000%) saturate(0%)")
-        //   }
-        //   onMouseLeave={(e) =>
-        //     (e.currentTarget.style.filter =
-        //       "grayscale(100%) brightness(0.3) invert(0.4) sepia(1) saturate(5000%) hue-rotate(180deg) contrast(0.8)")
-        //   }
-      //     style={{
-      //       filter:
-      //         "grayscale(100%) brightness(0.3) invert(0.4) sepia(1) saturate(5000%) hue-rotate(180deg) contrast(0.8)",
-      //     }}
-      //   />
-      // ),
 
       icon: <HiOutlineBuildingOffice2 className="text-3xl" />,
       title: "Company Registration",

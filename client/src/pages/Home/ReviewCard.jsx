@@ -85,7 +85,7 @@ function ReviewCard({ item }) {
 
 export default function ReviewCarousel() {
   return (
-    <section className="w-full bg-gradient-to-br from-blue-50 to-indigo-50 py-20">
+    <section className="w-full py-10 ">
       <div className="mx-auto max-w-6xl px-4">
         <Swiper
           effect={"coverflow"}

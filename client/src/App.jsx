@@ -59,6 +59,7 @@ import ClosureCompany from "./components/OtherReg/ClosureCompany";
 import ClosureLLP from "./components/OtherReg/ClosureLLP";
 import ClosureFirm from "./components/OtherReg/ClosureFirm";
 import ClosureOPC from "./components/OtherReg/ClosureOPC";
+import Blog from "./pages/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -68,240 +69,237 @@ export const router = createBrowserRouter([
       { path: "/", element: <Home /> },
       { path: "/about", element: <About /> },
       {
-        path:"/contact",
-        element :<Contact/>
+        path: "/contact",
+        element: <Contact />,
       },
       {
-        path:"/privacy-policy",
-        element :<PrivacyPolicy/>
-      },
-       {
-        path:"/terms-conditions",
-        element :<TermCondition/>
-      },
-       {
-        path:"/refund-policy",
-        element :<RefundPolicy/>
+        path: "/Private-limited-Company",
+        element: <PrivateLimited />,
       },
       {
-        path:"/Private-limited-Company",
-        element :<PrivateLimited/>
-      },
-       {
-        path:"/limited-liability-partnership",
-        element :<LlPatership/>
-      },
-       {
-        path:"/one-person-company",
-        element :<OnePerCompany/>
+        path: "/limited-liability-partnership",
+        element: <LlPatership />,
       },
       {
-        path:"/partnership-firm",
-        element :<Paternershipfirm/>
+        path: "/one-person-company",
+        element: <OnePerCompany />,
       },
       {
-        path:"/sole-proprietorship",
-        element :<Soleproprietorship/>
+        path: "/partnership-firm",
+        element: <Paternershipfirm />,
       },
       {
-        path:"/huf",
-        element :<HUF/>
+        path: "/sole-proprietorship",
+        element: <Soleproprietorship />,
       },
       {
-        path:"/section-8-company",
-        element :<Section8company/>
-      },
-       {
-        path:"/nidhi-company",
-        element :<Nidhicompany/>
-      },
-       {
-        path:"/public-limited-company",
-        element :<Publiclimitedcompany/>
-      },
-       {
-        path:"/e-commerce-business-setup",
-        element :<Ecommercebusinesssetup/>
-      },
-       {
-        path:"/AnnualFilings/PrivateLtd",
-        element :<PrivateLtd/>
-      },
-       {
-        path:"/AnnualFilings/LLP",
-        element :<LLP/>
-      },
-       {
-        path:"/AnnualFilings/PublicLtd",
-        element :<PublicLtd/>
-      },
-       {
-        path:"/AnnualFilings/OPC",
-        element :<OPC/>
-      },
-       {
-        path:"AnnualFilings/NPO",
-        element :<NOP/>
-      },
-       {
-        path:"/AnnualFilings/Nidhi",
-        element :<Nidhi/>
-      },
-       {
-        path:"/AnnualFilings/INC20A",
-        element :<INC20A/>
-      },
-       {
-        path:"/CompanyChanges/AddDirector",
-        element :<AddDirector/>
-      },
-       {
-        path:"/CompanyChanges/ResignationDirector",
-        element :<ResignationDirector/>
+        path: "/huf",
+        element: <HUF />,
       },
       {
-        path:"/CompanyChanges/ResignationDirector",
-        element :<ResignationDirector/>
+        path: "/section-8-company",
+        element: <Section8company />,
       },
       {
-        path:"/CompanyChanges/IncreaseCapital",
-        element :<IncreaseCapital/>
+        path: "/nidhi-company",
+        element: <Nidhicompany />,
       },
       {
-        path:"CompanyChanges/ChangeOfficeAddress",
-        element :<ChangeOfficeAddress/>
+        path: "/public-limited-company",
+        element: <Publiclimitedcompany />,
       },
       {
-        path:"/CompanyChanges/CompanyNameChange",
-        element :<CompanyNameChange/>
+        path: "/e-commerce-business-setup",
+        element: <Ecommercebusinesssetup />,
       },
       {
-        path:"/CompanyChanges/MOA_AOAAmendment",
-        element :<Amendment/>
+        path: "/AnnualFilings/PrivateLtd",
+        element: <PrivateLtd />,
       },
       {
-        path:"/LLP/AddRemovePartner",
-        element :<AddRemovePartner/>
+        path: "/AnnualFilings/LLP",
+        element: <LLP />,
       },
       {
-        path:"/LLP/ChangeAgreement",
-        element :<ChangeAgreement/>
+        path: "/AnnualFilings/PublicLtd",
+        element: <PublicLtd />,
       },
       {
-        path:"/LLP/ChangeSurrenderDIN",
-        element :<ChangeSurrenderDIN/>
+        path: "/AnnualFilings/OPC",
+        element: <OPC />,
       },
       {
-        path:"/LLP/AuditorAppointment",
-        element :<AuditorAppointment/>
+        path: "AnnualFilings/NPO",
+        element: <NOP />,
       },
       {
-        path:"/LLP/ShareTransfer",
-        element :<ShareTransfer/>
+        path: "/AnnualFilings/Nidhi",
+        element: <Nidhi />,
       },
       {
-        path:"/GST/Registration",
-        element :<Registration/>
+        path: "/AnnualFilings/INC20A",
+        element: <INC20A />,
       },
       {
-        path:"/GST/LUT",
-        element :<LUT/>
+        path: "/CompanyChanges/AddDirector",
+        element: <AddDirector />,
       },
       {
-        path:"/GST/Cancellation",
-        element :<Cancellation/>
+        path: "/CompanyChanges/ResignationDirector",
+        element: <ResignationDirector />,
       },
       {
-        path:"/GST/Returns",
-        element :<Returns/>
+        path: "/CompanyChanges/ResignationDirector",
+        element: <ResignationDirector />,
       },
       {
-        path:"/IncomeTax/Returns",
-        element :<IncomeTaxReturns/>
+        path: "/CompanyChanges/IncreaseCapital",
+        element: <IncreaseCapital />,
       },
       {
-        path:"/PF/Returns",
-        element :<PFReturns/>
-      },
-       {
-        path:"/ESI/Returns",
-        element :<ESIReturns/>
-      },
-       {
-        path:"/Trademark/Registration",
-        element :<TrademarkRegistration/>
-      },
-       {
-        path:"/Trademark/Objection",
-        element :<TrademarkObjection/>
-      },
-       {
-        path:"/Trademark/Renewal",
-        element :<TrademarkRenewal/>
-      },
-       {
-        path:"/Legal/Drafting",
-        element :<LegalDrafting/>
-      },
-       {
-        path:"/Legal/ROCSearch",
-        element :<LegalROCSearch/>
-      },
-       {
-        path:"/Licenses/IEC",
-        element :<LicensesIEC/>
+        path: "CompanyChanges/ChangeOfficeAddress",
+        element: <ChangeOfficeAddress />,
       },
       {
-        path:"/Licenses/ESIC",
-        element :<LicensesESIC/>
+        path: "/CompanyChanges/CompanyNameChange",
+        element: <CompanyNameChange />,
       },
       {
-        path:"/Licenses/EPF",
-        element :<LicensesEPF/>
+        path: "/CompanyChanges/MOA_AOAAmendment",
+        element: <Amendment />,
       },
       {
-        path:"/Licenses/FSSAI",
-        element :<LicensesFSSAI/>
+        path: "/LLP/AddRemovePartner",
+        element: <AddRemovePartner />,
       },
       {
-        path:"/Licenses/LEI",
-        element :<LicensesLEI/>
+        path: "/LLP/ChangeAgreement",
+        element: <ChangeAgreement />,
       },
       {
-        path:"/DigitalTools/DSC",
-        element :<DigitalToolsDSC/>
+        path: "/LLP/ChangeSurrenderDIN",
+        element: <ChangeSurrenderDIN />,
       },
       {
-        path:"/DigitalTools/PAN",
-        element :<DigitalToolsPAN/>
+        path: "/LLP/AuditorAppointment",
+        element: <AuditorAppointment />,
       },
       {
-        path:"/DigitalTools/TAN",
-        element :<DigitalToolsTAN/>
+        path: "/LLP/ShareTransfer",
+        element: <ShareTransfer />,
       },
       {
-        path:"/Closure/Company",
-        element :<ClosureCompany/>
+        path: "/GST/Registration",
+        element: <Registration />,
       },
-       {
-        path:"/Closure/LLP",
-        element :<ClosureLLP/>
+      {
+        path: "/GST/LUT",
+        element: <LUT />,
       },
-       {
-        path:"/Closure/Firm",
-        element :<ClosureFirm/>
+      {
+        path: "/GST/Cancellation",
+        element: <Cancellation />,
       },
-       {
-        path:"/Closure/OPC",
-        element :<ClosureOPC/>
+      {
+        path: "/GST/Returns",
+        element: <Returns />,
       },
-       
-
-
-
-     
-
-
+      {
+        path: "/IncomeTax/Returns",
+        element: <IncomeTaxReturns />,
+      },
+      {
+        path: "/PF/Returns",
+        element: <PFReturns />,
+      },
+      {
+        path: "/ESI/Returns",
+        element: <ESIReturns />,
+      },
+      {
+        path: "/Trademark/Registration",
+        element: <TrademarkRegistration />,
+      },
+      {
+        path: "/Trademark/Objection",
+        element: <TrademarkObjection />,
+      },
+      {
+        path: "/Trademark/Renewal",
+        element: <TrademarkRenewal />,
+      },
+      {
+        path: "/Legal/Drafting",
+        element: <LegalDrafting />,
+      },
+      {
+        path: "/Legal/ROCSearch",
+        element: <LegalROCSearch />,
+      },
+      {
+        path: "/Licenses/IEC",
+        element: <LicensesIEC />,
+      },
+      {
+        path: "/Licenses/ESIC",
+        element: <LicensesESIC />,
+      },
+      {
+        path: "/Licenses/EPF",
+        element: <LicensesEPF />,
+      },
+      {
+        path: "/Licenses/FSSAI",
+        element: <LicensesFSSAI />,
+      },
+      {
+        path: "/Licenses/LEI",
+        element: <LicensesLEI />,
+      },
+      {
+        path: "/DigitalTools/DSC",
+        element: <DigitalToolsDSC />,
+      },
+      {
+        path: "/DigitalTools/PAN",
+        element: <DigitalToolsPAN />,
+      },
+      {
+        path: "/DigitalTools/TAN",
+        element: <DigitalToolsTAN />,
+      },
+      {
+        path: "/Closure/Company",
+        element: <ClosureCompany />,
+      },
+      {
+        path: "/Closure/LLP",
+        element: <ClosureLLP />,
+      },
+      {
+        path: "/Closure/Firm",
+        element: <ClosureFirm />,
+      },
+      {
+        path: "/Closure/OPC",
+        element: <ClosureOPC />,
+      },
+      {
+        path: "/blogs",
+        element: <Blog />,
+      },
     ],
+  },
+  {
+    path: "/privacy-policy",
+    element: <PrivacyPolicy />,
+  },
+  {
+    path: "/terms-conditions",
+    element: <TermCondition />,
+  },
+  {
+    path: "/refund-policy",
+    element: <RefundPolicy />,
   },
 ]);
